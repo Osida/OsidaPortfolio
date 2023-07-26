@@ -1,21 +1,32 @@
 "use client";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {socialLinks} from "@/constants";
-import {motion} from "framer-motion";
+import {motion, useAnimation} from "framer-motion";
 import Link from "next/link";
 import {linkVariants} from "@/components/client/nav/Nav";
+import {ThemeToggleButton} from "@/components/client/theme/ThemeToggleButton";
 
 const Banner = () => {
+    const controls = useAnimation();
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        controls.start({opacity: 1, y: 0, transition: {duration: 0.8, ease: "easeInOut"}});
+        setIsLoaded(true);
+    }, []);
+
     return (
-        <article
+        <motion.article
+            initial={{opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : -50}}
+            animate={controls}
             className="bg-blue-2000 w-full container pt-5 flex flex-col lg:flex-row justify-center items-center lg:justify-between space-y-3">
             <Link href={"/"}>
                 <h3 className="text-4xl cursor-pointer">
-                    <span className="font-bold">Osida</span> Richards<span className="text-red-600">.</span>
+                    <span className="font-bold">Osida</span> Richards<span className="text-accent">.</span>
                 </h3>
             </Link>
 
-            <div className="space-x-3">
+            <div className="space-x-3 flex items-center">
                 {socialLinks.map(({path, name, Icon}) => (
                     <motion.li
                         key={name}
@@ -27,8 +38,9 @@ const Banner = () => {
                         <Link href={path}>{Icon}</Link>
                     </motion.li>
                 ))}
+                <ThemeToggleButton styles={"nav-icon"}/>
             </div>
-        </article>
+        </motion.article>
     );
 };
 

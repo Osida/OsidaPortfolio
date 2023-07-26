@@ -2,16 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+:root[data-theme='light'] {
+    --color-background: white;
+    --color-text: black;
+}
+
+:root[data-theme='dark'] {
+    --color-background: black;
+    --color-text: white;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
 @layer components {
     .container {
         @apply mx-auto px-6 max-w-7xl;
     }
 
     .nav-icon {
-        @apply w-5 h-5 text-gray-500;
+        @apply w-4 h-4 lg:w-6 lg:h-6 text-gray-500 transition-colors duration-200 ease-in hover:text-primary;
     }
 
     .banner-icon {
-        @apply w-4 h-4 text-gray-500;
+        @apply nav-icon;
     }
 }

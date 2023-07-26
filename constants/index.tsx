@@ -4,6 +4,7 @@ import {BsInstagram, BsPersonFillGear} from "react-icons/bs";
 import {MdOutlineSettingsSuggest} from "react-icons/md";
 import {FaGithub, FaLinkedin} from "react-icons/fa";
 import {FaSquareTwitter} from "react-icons/fa6";
+import React from "react";
 
 export const navLinks = [
     {

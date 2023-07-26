@@ -1,9 +1,11 @@
+// "use client";
 import "../styles/globals.css";
 import type {Metadata} from "next";
 import {Inter} from "next/font/google";
 import React from "react";
 import Nav from "@/components/client/nav/Nav";
 import Banner from "@/components/client/banner/Banner";
+import {ThemeProvider} from "@/components/client/theme/Theme";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -17,10 +19,12 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
     return (
         <html lang="en">
         <body className={inter.className}>
-        <div className="relative min-h-screen mx-auto max-w-7xll">
-            <Nav/>
-            <Banner/>
-            {children}
+        <div className="relative min-h-screen mx-auto overflow-hidden">
+            <ThemeProvider>
+                <Nav/>
+                <Banner/>
+                {children}
+            </ThemeProvider>
         </div>
         </body>
         </html>
