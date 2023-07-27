@@ -17,12 +17,12 @@ const Contact = () => {
 
     return (
         <PageTransition path={"/contact"}>
-            <main className="container">
+            <main className="container mt-24 mb-40">
                 <motion.h1
                     variants={animations.headingVariants}
                     initial="hidden"
                     animate="visible"
-                    className="text-3xl font-bold text-center lg:text-left mt-20 mb-5 lg:max-w-xl"
+                    className="font-roboto text-h1 font-h1 text-center lg:text-left mb-5 lg:max-w-xl"
                 >
                     Let's
                     <span className="text-accent">
@@ -82,3 +82,6 @@ const Contact = () => {
 };
 
 export default Contact;
+
+
+

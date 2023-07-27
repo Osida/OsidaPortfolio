@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^9.79.4",
+    "@react-three/fiber": "^8.13.6",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.14.3",
     "@types/node": "20.4.4",
@@ -26,6 +28,8 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
     "react-simple-typewriter": "^5.0.1",
+    "react-spring": "^9.7.2",
+    "react-tsparticles": "^2.11.0",
     "sanity": "^3.14.3",
     "sanity-plugin-asset-source-unsplash": "^1.1.0",
     "styled-components": "5.2",

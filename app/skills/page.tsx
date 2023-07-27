@@ -15,12 +15,12 @@ const Skills = () => {
 
     return (
         <PageTransition path={"/skills"}>
-            <main className="container">
+            <main className="container mt-24 mb-40">
                 <motion.h1
                     variants={animations.headingVariants}
                     initial="hidden"
                     animate="visible"
-                    className="text-3xl font-bold text-center lg:text-left mt-20 mb-5 lg:max-w-xl"
+                    className="font-roboto text-h1 font-h1 text-center lg:text-left mb-5 lg:max-w-xl"
                 >
                     My
                     <span className="text-accent">
@@ -56,7 +56,7 @@ const Skills = () => {
                             variants={staggerVariants}
                             initial="hidden"
                             animate="visible"
-                            transition={{duration: 0.5, delay: i * 0.1}}
+                            transition={{duration: 0.7, delay: i * 0.3}}
                             whileHover={{
                                 scale: 1.2,
                                 boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",

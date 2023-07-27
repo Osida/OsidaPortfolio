@@ -29,4 +29,8 @@ body {
     .banner-icon {
         @apply nav-icon;
     }
+
+    .h1-styles {
+        @apply text-5xl font-bold sm:text-6xl;
+    }
 }

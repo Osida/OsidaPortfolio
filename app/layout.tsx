@@ -18,8 +18,8 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
 
     return (
         <html lang="en">
-        <body className={inter.className}>
-        <div className="relative min-h-screen mx-auto overflow-hidden">
+        <body className={`${inter.className}`}>
+        <div className="relative min-h-screen mx-auto overflow-x-hidden">
             <ThemeProvider>
                 <Nav/>
                 <Banner/>

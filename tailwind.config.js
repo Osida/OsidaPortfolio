@@ -8,10 +8,39 @@ module.exports = {
     ],
     theme: {
         extend: {
-            backgroundImage: {
-                "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-                "gradient-conic":
-                    "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+            fontFamily: {
+                "roboto": ["Roboto", "sans-serif"],
+                "open-sans": ["Open Sans", "sans-serif"],
+            },
+            fontSize: {
+                "h1": "2.5em",
+                "h2": "2em",
+                "h3": "1.75em",
+                "h4": "1.5em",
+                "h5": "1.25em",
+                "h6": "1em",
+                "subtitle1": "1em",
+                "subtitle2": "0.875em",
+                "body1": "1em",
+                "body2": "0.875em",
+                "button": "1em",
+                "caption": "0.75em",
+                "overline": "0.75em",
+            },
+            fontWeight: {
+                "h1": "bold",
+                "h2": "bold",
+                "h3": "bold",
+                "h4": "bold",
+                "h5": "bold",
+                "h6": "bold",
+                "subtitle1": "normal",
+                "subtitle2": "normal",
+                "body1": "normal",
+                "body2": "normal",
+                "button": "500",
+                "caption": "normal",
+                "overline": "normal",
             },
         },
         light: {

@@ -19,9 +19,9 @@ const Banner = () => {
         <motion.article
             initial={{opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : -50}}
             animate={controls}
-            className="bg-blue-2000 w-full container pt-5 flex flex-col lg:flex-row justify-center items-center lg:justify-between space-y-3">
+            className="bg-blue-2000 w-full container pt-5 flex flex-col justify-center items-center lg:flex-row lg:items-end lg:justify-between ">
             <Link href={"/"}>
-                <h3 className="text-4xl cursor-pointer">
+                <h3 className="font-roboto text-h3 font-h3 cursor-pointer">
                     <span className="font-bold">Osida</span> Richards<span className="text-accent">.</span>
                 </h3>
             </Link>

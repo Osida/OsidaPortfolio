@@ -8,19 +8,15 @@ import {animations} from "@/utils/client";
 import {Typewriter} from "react-simple-typewriter";
 
 const Services = () => {
-    const cardVariants = {
-        hover: {y: -10, scale: 1.02, transition: {duration: 0.2}},
-        initial: {y: 0, scale: 1.0, transition: {duration: 0.2}}
-    };
 
     return (
         <PageTransition path={"/services"}>
-            <main className="container">
+            <main className="container bg-red-2000 mt-24 mb-40">
                 <motion.h1
                     variants={animations.headingVariants}
                     initial="hidden"
                     animate="visible"
-                    className="text-3xl font-bold text-center lg:text-left mt-20 mb-5 lg:max-w-xl"
+                    className="font-roboto text-h1 font-h1 text-center lg:text-left mb-5 lg:max-w-xl"
                 >
                     My
                     <span className="text-accent">
@@ -54,7 +50,7 @@ const Services = () => {
                             // card component
                             <motion.div
                                 key={i}
-                                variants={cardVariants}
+                                variants={animations.cardVariants}
                                 whileHover="hover"
                                 initial="initial"
                                 className="card mx-auto max-w-xs bg-base-100 shadow-xl break-inside-avoid-auto lg:mx-0 relative"

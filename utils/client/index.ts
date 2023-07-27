@@ -3,16 +3,18 @@ export const animations = {
         hidden: {opacity: 0},
         visible: {
             opacity: 1,
-            transition: {duration: 1, delay: 0.5},
+            transition: {duration: 1, delay: 0.5, ease: "easeInOut"},
         },
     },
-
     paragraphVariants: {
         hidden: {opacity: 0, y: 20},
-        visible: {opacity: 1, y: 0, transition: {duration: 1, delay: 1}},
+        visible: {opacity: 1, y: 0, transition: {duration: 1, delay: 1, ease: "easeInOut"}},
     },
+    cardVariants: {
+        hover: {y: -10, scale: 1.02, transition: {duration: 0.2, ease: "easeInOut"}},
+        initial: {y: 0, scale: 1.0, transition: {duration: 0.2, ease: "easeInOut"}}
+    }
 };
-
 
 export const headerTaglines = [
     " ",
