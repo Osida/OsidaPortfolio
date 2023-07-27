@@ -35,7 +35,7 @@ const Banner = () => {
                         whileHover="hover"
                         className="btn btn-ghost"
                     >
-                        <Link href={path}>{Icon}</Link>
+                        <a href={path} target="_blank" rel="noopener noreferrer">{Icon}</a>
                     </motion.li>
                 ))}
                 <ThemeToggleButton styles={"nav-icon"}/>

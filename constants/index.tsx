@@ -36,22 +36,22 @@ export const navLinks = [
 
 export const socialLinks = [
     {
-        path: "/https://github.com/Osida",
+        path: "https://github.com/Osida",
         name: "GitHub",
         Icon: <FaGithub className={"banner-icon"}/>,
     },
     {
-        path: "/www.linkedin.com/in/osida-richards",
+        path: "https://www.linkedin.com/in/osida-richards",
         name: "LinkedIn",
         Icon: <FaLinkedin className={"banner-icon"}/>,
     },
     {
-        path: "/",
+        path: "https://www.instagram.com", // replace with your Instagram URL
         name: "Instagram",
         Icon: <BsInstagram className={"banner-icon"}/>,
     },
     {
-        path: "/",
+        path: "https://www.twitter.com", // replace with your Twitter URL
         name: "Twitter",
         Icon: <FaSquareTwitter className={"banner-icon"}/>,
     },
