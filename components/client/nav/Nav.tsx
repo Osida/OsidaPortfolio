@@ -28,8 +28,8 @@ const Nav = () => {
                     initial={{opacity: 0.7, y: 50}}
                     animate={{opacity: 1, y: 0, transition: {duration: 0.8, ease: "easeInOut"}}}
                     // exit={{opacity: 0, y: 50, transition: {duration: 0.8, ease: "easeInOut"}}}
-                    whileHover={{backgroundColor: "#030712", transition: {duration: 0.05, ease: "easeInOut"}}}
-                    className="bg-blue-3000 z-50 fixed bottom-0 left-0 right-0 py-2 lg:rounded-full lg:py-8 lg:w-20 lg:flex lg:flex-col lg:left-auto lg:bottom-5 lg:top-auto lg:right-7">
+                    // whileHover={{backgroundColor: "#030712", transition: {duration: 0.05, ease: "easeInOut"}}}
+                    className="bg-blue-3000 z-50 fixed bottom-0 left-0 right-0 py-2 lg:rounded-full hover:bg-base-100 ease-in-out duration-500 transition-all lg:py-8 lg:w-20 lg:flex lg:flex-col lg:left-auto lg:bottom-5 lg:top-auto lg:right-7">
                     <ul className="bg-yellow-3000 w-full h-full flex items-center justify-evenly lg:rounded-full lg:flex-col lg:space-y-10">
                         {navLinks.map(({path, name, Icon}) => (
                             <Link key={name} href={path}>

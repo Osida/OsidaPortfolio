@@ -1,13 +1,22 @@
 "use client";
-import React, {FormEvent} from "react";
+import React, {FormEvent, useEffect, useState} from "react";
 import {handleContactFormSubmit} from "@/utils/server";
 import Button from "@/components/client/form/Button";
 import PageTransition from "@/components/client/layoutTransition/PageTransition";
 import {motion} from "framer-motion";
 import {animations} from "@/utils/client";
 import {Typewriter} from "react-simple-typewriter";
+import Image from "next/image";
+import {images} from "@/public";
 
 const Contact = () => {
+    const [animation, setAnimation] = useState("hidden");
+
+    useEffect(() => {
+        setAnimation("visible");
+        const timer = setTimeout(() => setAnimation("hover"), 2000);
+        return () => clearTimeout(timer);
+    }, []);
 
     const handleFormReset = (event: FormEvent) => {
         event.preventDefault();
@@ -17,7 +26,7 @@ const Contact = () => {
 
     return (
         <PageTransition path={"/contact"}>
-            <main className="container mt-24 mb-40">
+            <main className="container mt-24 mb-40 relative">
                 <motion.h1
                     variants={animations.headingVariants}
                     initial="hidden"
@@ -25,7 +34,7 @@ const Contact = () => {
                     className="font-roboto text-h1 font-h1 text-center lg:text-left mb-5 lg:max-w-xl"
                 >
                     Let's
-                    <span className="text-accent">
+                    <span className="text-primary">
                         <Typewriter
                             words={["", " Connect"]}
                             cursor
@@ -37,7 +46,6 @@ const Contact = () => {
                     </span>
                 </motion.h1>
                 {/*<Image src={images.imessage.src} alt={"imessage"} width={150} height={150}/>*/}
-
                 <form
                     action={handleContactFormSubmit}
                     className="bg-amber-2000 form-control w-full max-w-xs mx-auto space-y-2 mb-20 md:max-w-xl lg:ml-0"
@@ -76,6 +84,21 @@ const Contact = () => {
                         <Button/>
                     </div>
                 </form>
+
+                <motion.div
+                    variants={animations.imageVariants}
+                    initial="hidden"
+                    animate={animation}
+                    className="hidden bg-sky-2000 z-0 relative bg-emerald-2000 lg:inline lg:absolute lg:bottom-0 lg:right-5 xl:top-0 xl:right-0"
+                >
+                    <Image
+                        src={images.manWithDog.src}
+                        alt={"Panda Image"}
+                        width={450}
+                        height={450}
+                        className={"object-contain mx-auto xl:w-[650px] xl:h-[650px]"}
+                    />
+                </motion.div>
             </main>
         </PageTransition>
     );

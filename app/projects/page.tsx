@@ -18,7 +18,7 @@ const Projects = () => {
                     className="font-roboto text-h1 font-h1 text-center lg:text-left mb-5 lg:max-w-xl"
                 >
                     My
-                    <span className="text-accent">
+                    <span className="text-primary">
                         <Typewriter
                             words={["", " Projects"]}
                             cursor
@@ -78,7 +78,7 @@ const Projects = () => {
                                         #Lorem #ipsum #dolor
                                     </p>
                                     <div className="card-actions justify-end mt-5">
-                                        <button className="btn btn-sm btn-primary">Code</button>
+                                        <button className="btn btn-sm btn-secondary ">Code</button>
                                         <button className="btn btn-sm btn-primary">Live</button>
                                     </div>
                                 </div>

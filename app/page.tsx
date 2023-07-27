@@ -7,9 +7,17 @@ import {Typewriter} from "react-simple-typewriter";
 import {animations, headerTaglines} from "@/utils/client";
 import Image from "next/image";
 import {images} from "@/public";
+import {useEffect, useState} from "react";
 
 
 export default function Home() {
+    const [animation, setAnimation] = useState("hidden");
+
+    useEffect(() => {
+        setAnimation("visible");
+        const timer = setTimeout(() => setAnimation("hover"), 2000);
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
         <PageTransition path={"/home"}>
@@ -21,7 +29,7 @@ export default function Home() {
                     className={`font-roboto text-h1 font-h1 mb-5 text-center lg:mb-8 lg:text-6xl lg:text-left lg:max-w-3xl`}
                 >
                     Transforming Ideas <br/>
-                    <span className="text-accent">
+                    <span className="text-primary">
                         <Typewriter
                             words={[...headerTaglines]}
                             loop={5}
@@ -38,7 +46,7 @@ export default function Home() {
                     variants={animations.paragraphVariants}
                     initial="hidden"
                     animate="visible"
-                    className={` font-open-sans text-body1 font-body1 mx-auto text-center max-w-xl lg:text-xl lg:text-left lg:max-w-2xl lg:ml-0`}
+                    className={` z-50 font-open-sans text-body1 font-body1 mx-auto text-center max-w-xl lg:text-xl lg:text-left lg:max-w-2xl lg:ml-0`}
                 >
                     lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et
@@ -48,17 +56,20 @@ export default function Home() {
                 <div className="bg-amber-2000 flex items-center justify-center lg:justify-start lg:pl-3 mt-16">
                     <AnimatedArrow/>
                 </div>
-                <div
-                    className="relative bg-emerald-2000 lg:absolute lg:top-20 lg:right-20 xl:top-40 xl:right-40"
+                <motion.div
+                    variants={animations.imageVariants}
+                    initial="hidden"
+                    animate={animation}
+                    className="z-0 relative bg-emerald-2000 lg:absolute lg:top-20 lg:right-20 xl:top-40 xl:right-30"
                 >
                     <Image
                         src={images.panda.src}
                         alt={"Panda Image"}
                         width={500}
                         height={500}
-                        className={"object-contain mx-auto"}
+                        className={"object-contain mx-auto xl:w-[700px] xl:h-[700px]"}
                     />
-                </div>
+                </motion.div>
 
             </main>
         </PageTransition>
@@ -87,9 +98,9 @@ const AnimatedArrow = () => {
             whileTap={{scale: 0.9, transition: {duration: 0.3, ease: "easeInOut"}}}
             className="bg-blue-2000 flex w-fit h-fit flex-col space-y-2 items-center mb-6"
         >
-            <p className="text-sm">My Projects</p>
+            <p className="font-roboto font-overline uppercase">My Projects</p>
             <Link href={"/projects"}>
-                <FaArrowRightLong className="text-primary w-16 h-16 lg:w-20 lg:h-20"/>
+                <FaArrowRightLong className="text-secondary w-16 h-16 lg:w-20 lg:h-20"/>
             </Link>
         </motion.div>
     );

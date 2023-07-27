@@ -23,7 +23,7 @@ body {
     }
 
     .nav-icon {
-        @apply w-4 h-4 lg:w-6 lg:h-6 text-gray-500 transition-colors duration-200 ease-in hover:text-primary;
+        @apply w-4 h-4 lg:w-6 lg:h-6 text-gray-500 transition-colors duration-200 ease-in hover:text-accent;
     }
 
     .banner-icon {
