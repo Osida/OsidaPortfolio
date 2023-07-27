@@ -33,7 +33,7 @@ const Contact = () => {
                     animate="visible"
                     className="font-roboto text-h1 font-h1 text-center lg:text-left mb-5 lg:max-w-xl"
                 >
-                    Let's
+                    {"Let's"}
                     <span className="text-primary">
                         <Typewriter
                             words={["", " Connect"]}
