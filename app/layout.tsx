@@ -6,6 +6,7 @@ import React from "react";
 import Nav from "@/components/client/nav/Nav";
 import Banner from "@/components/client/banner/Banner";
 import {ThemeProvider} from "@/components/client/theme/Theme";
+import QueryProvider from "@/lib/tanstack-query/QueryProvider";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -20,11 +21,13 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         <html lang="en">
         <body className={`${inter.className}`}>
         <div className="relative min-h-screen mx-auto overflow-x-hidden">
-            <ThemeProvider>
-                <Nav/>
-                <Banner/>
-                {children}
-            </ThemeProvider>
+            <QueryProvider>
+                <ThemeProvider>
+                    <Nav/>
+                    <Banner/>
+                    {children}
+                </ThemeProvider>
+            </QueryProvider>
         </div>
         </body>
         </html>

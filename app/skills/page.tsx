@@ -6,12 +6,26 @@ import {images} from "@/public";
 import PageTransition from "@/components/client/layoutTransition/PageTransition";
 import {animations} from "@/utils/client";
 import {Typewriter} from "react-simple-typewriter";
+import {useQuery} from "@tanstack/react-query";
+import axios from "axios";
+import {SkillsData} from "@/types";
 
 const Skills = () => {
     const staggerVariants = {
         hidden: {opacity: 0},
         visible: {opacity: 1},
     };
+
+    const fetchSkills = async () => {
+        const {data, status} = await axios.get("/api/skills");
+        if (status !== 200) throw new Error("Error fetching skills");
+        return data;
+    };
+
+    const {isLoading, isError, data, error} = useQuery<SkillsData>({
+        queryKey: ["skills"],
+        queryFn: fetchSkills,
+    });
 
     return (
         <PageTransition path={"/skills"}>
