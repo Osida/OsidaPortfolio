@@ -6,6 +6,7 @@ import {motion} from "framer-motion";
 import PageTransition from "@/components/client/layoutTransition/PageTransition";
 import {animations} from "@/utils/client";
 import {Typewriter} from "react-simple-typewriter";
+import Image from "next/image";
 
 const Projects = () => {
     return (
@@ -55,8 +56,8 @@ const Projects = () => {
                                 className="card mx-auto max-w-xs bg-base-100 shadow-xl break-inside-avoid-auto lg:mx-0 relative"
                             >
                                 <figure className="relative">
-                                    <img src={images.service1.src} alt="service1"
-                                         className="w-full h-full object-contain"/>
+                                    <Image src={images.service1.src} alt="service1" width={500} height={500}
+                                           className="w-full h-full object-contain"/>
                                     <div
                                         className="absolute top-0 left-0 w-full h-full bg-gray-800 opacity-0 hover:opacity-60 transition-opacity duration-300 flex items-center justify-center">
                                         {/*<Link href="https://reactjs.org/">*/}

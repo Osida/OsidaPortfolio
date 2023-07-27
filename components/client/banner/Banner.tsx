@@ -13,7 +13,7 @@ const Banner = () => {
     useEffect(() => {
         controls.start({opacity: 1, y: 0, transition: {duration: 0.8, ease: "easeInOut"}});
         setIsLoaded(true);
-    }, []);
+    }, [controls]);
 
     return (
         <motion.article
