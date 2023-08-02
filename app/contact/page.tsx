@@ -8,8 +8,11 @@ import {animations} from "@/utils/client";
 import {Typewriter} from "react-simple-typewriter";
 import Image from "next/image";
 import {images} from "@/public";
+import {usePathname} from "next/navigation";
+
 
 const Contact = () => {
+    const pathName = usePathname();
     const [animation, setAnimation] = useState("hidden");
 
     useEffect(() => {
@@ -25,7 +28,7 @@ const Contact = () => {
     };
 
     return (
-        <PageTransition path={"/contact"}>
+        <PageTransition path={pathName}>
             <main className="container mt-24 mb-40 relative">
                 <motion.h1
                     variants={animations.headingVariants}

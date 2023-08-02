@@ -56,3 +56,10 @@ export const socialLinks = [
         Icon: <FaSquareTwitter className={"banner-icon"}/>,
     },
 ];
+
+export const endpoints = {
+    projects: "/api/projects",
+    project: (id: string) => `/api/projects/${id}`,
+    skills: "/api/skills",
+    services: "/api/services",
+};

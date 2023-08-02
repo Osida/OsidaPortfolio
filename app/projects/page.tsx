@@ -1,16 +1,50 @@
 "use client";
-import React from "react";
-import {FaReact} from "react-icons/fa";
-import {images} from "@/public";
+import React, {useEffect, useState} from "react";
 import {motion} from "framer-motion";
 import PageTransition from "@/components/client/layoutTransition/PageTransition";
 import {animations} from "@/utils/client";
 import {Typewriter} from "react-simple-typewriter";
+import axios from "axios";
+import {useQuery} from "@tanstack/react-query";
 import Image from "next/image";
+import {usePathname} from "next/navigation";
+import {endpoints} from "@/constants";
+import placeholder from "@/public/images/placeholder-project.png";
 
 const Projects = () => {
+    const pathName = usePathname();
+    const [clientData, setClientData] = useState<ProjectData[] | undefined | null>(null);
+    const [isHovered, setIsHovered] = useState(false);
+
+
+    const fetchProjects = async () => {
+        const {data, status} = await axios.get<ProjectData[]>(endpoints.projects);
+        if (status !== 200) throw new Error("Error fetching projects");
+        return data;
+    };
+
+    const {isLoading, isError, data, error} = useQuery<ProjectData[]>({
+        queryKey: ["projects"],
+        queryFn: fetchProjects,
+    });
+
+    useEffect(() => {
+        if (data) {
+            setClientData(data);
+        }
+    }, [data]);
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (isError && error) {
+        // @ts-ignore
+        return <div>Error: {error?.message}</div>;
+    }
+
     return (
-        <PageTransition path={"/projects"}>
+        <PageTransition path={pathName}>
             <main className="container mt-24 mb-40">
                 <motion.h1
                     variants={animations.headingVariants}
@@ -31,64 +65,41 @@ const Projects = () => {
                     </span>
                 </motion.h1>
 
-                <motion.p
-                    variants={animations.paragraphVariants}
-                    initial="hidden"
-                    animate="visible"
-                    className="mx-auto text-center max-w-xl lg:text-left lg:max-w-2xl lg:ml-0"
-                >
-                    lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-                </motion.p>
-
-                {/* card container*/}
-                <section
-                    className="bg-blue-5000 p-3 mt-16 mb-32 mx-auto space-y-10 md:max-w-3xl md:grid md:space-y-0 md:gap-10 md:grid-cols-2 lg:mx-0 lg:max-w-6xl lg:grid-cols-3">
+                <section className="relative bg-violet-5000 mt-16 mb-32 columns-1 md:columns-2 lg:columns-3 space-y-7">
                     {
-                        Array(10).fill(0).map((_, i) => (
-                            // card component
-                            <motion.div
-                                key={i}
-                                variants={animations.cardVariants}
-                                whileHover="hover"
-                                initial="initial"
-                                className="card mx-auto max-w-xs bg-base-100 shadow-xl break-inside-avoid-auto lg:mx-0 relative"
-                            >
-                                <figure className="relative">
-                                    <Image src={images.service1.src} alt="service1" width={500} height={500}
-                                           className="w-full h-full object-contain"/>
-                                    <div
-                                        className="absolute top-0 left-0 w-full h-full bg-gray-800 opacity-0 hover:opacity-60 transition-opacity duration-300 flex items-center justify-center">
-                                        {/*<Link href="https://reactjs.org/">*/}
-                                        <a target="_blank">
-                                            <FaReact size={48} className="text-white"/>
-                                        </a>
-                                        {/*</Link>*/}
-                                    </div>
-                                </figure>
-                                <div className="card-body">
-                                    <h2 className="card-title">Frontend Development</h2>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                        sed
-                                        do eiusmod tempor incididunt ut labore.
-                                    </p>
-                                    <p>
-                                        #Lorem #ipsum #dolor
-                                    </p>
-                                    <div className="card-actions justify-end mt-5">
-                                        <button className="btn btn-sm btn-secondary ">Code</button>
-                                        <button className="btn btn-sm btn-primary">Live</button>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
+                        data && data.map((project, index) => (
+                            <Project key={project._id} project={project}/>
+                        ))
+                    }
                 </section>
             </main>
         </PageTransition>
     );
 };
+
+const Project = ({project}: { project: ProjectData }) => {
+    return (
+        <div className="mx-auto card card-compact max-w-sm h-fit bg-base-100 shadow-xl break-inside-avoid-column">
+            <figure className="relative">
+                <Image
+                    src={placeholder}
+                    alt={"Image"}
+                    width={400}
+                    height={300}
+                    className="mx-auto object-contain md:w-full md:h-full"
+                />
+            </figure>
+            <div className="card-body space-y-5">
+                <h2 className="card-title">{project.projectName}</h2>
+                <p>{project.projectDescription}</p>
+                <div className="card-actions justify-end">
+                    <button className="btn btn-primary btn-sm">Code</button>
+                    <button className="btn btn-primary btn-sm">Live</button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 
 export default Projects;

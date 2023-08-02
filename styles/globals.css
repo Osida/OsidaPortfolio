@@ -17,6 +17,7 @@ body {
     color: var(--color-text);
 }
 
+
 @layer components {
     .container {
         @apply mx-auto px-6 max-w-7xl;
@@ -32,5 +33,17 @@ body {
 
     .h1-styles {
         @apply text-5xl font-bold sm:text-6xl;
+    }
+
+    .my-masonry-grid {
+        @apply flex w-auto
+    }
+
+    .my-masonry-grid_column {
+        @apply bg-clip-padding
+    }
+
+    .my-masonry-grid_column > div {
+        @apply mb-4
     }
 }

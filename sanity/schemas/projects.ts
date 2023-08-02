@@ -4,9 +4,30 @@ export default {
     type: "document",
     fields: [
         {
-            name: "image",
-            title: "Image",
+            name: "projectName",
+            title: "Project Name",
+            type: "string",
+        },
+        {
+            name: "projectType",
+            title: "Project Type",
+            type: "string",
+        },
+        {
+            name: "status",
+            title: "Status",
+            type: "string",
+        },
+        {
+            name: "illustration",
+            title: "Illustration",
             type: "image",
+        },
+        {
+            name: "images",
+            title: "Images",
+            type: "array",
+            of: [{ type: "image" }]
         },
         {
             name: "repositoryLink",
@@ -17,11 +38,6 @@ export default {
             name: "deployedLink",
             title: "Deployed Link",
             type: "url",
-        },
-        {
-            name: "projectName",
-            title: "Project Name",
-            type: "string",
         },
         {
             name: "projectDescription",

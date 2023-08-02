@@ -2,33 +2,45 @@
 import React from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {images} from "@/public";
 import PageTransition from "@/components/client/layoutTransition/PageTransition";
 import {animations} from "@/utils/client";
 import {Typewriter} from "react-simple-typewriter";
 import {useQuery} from "@tanstack/react-query";
 import axios from "axios";
-import {SkillsData} from "@/types";
+import {urlForImage} from "@/sanity/lib/image";
+import {usePathname} from "next/navigation";
+import {endpoints} from "@/constants";
 
 const Skills = () => {
+    const pathName = usePathname();
+
     const staggerVariants = {
         hidden: {opacity: 0},
         visible: {opacity: 1},
     };
 
     const fetchSkills = async () => {
-        const {data, status} = await axios.get("/api/skills");
+        const {data, status} = await axios.get<SkillData[]>(endpoints.skills);
         if (status !== 200) throw new Error("Error fetching skills");
         return data;
     };
 
-    const {isLoading, isError, data, error} = useQuery<SkillsData>({
+    const {isLoading, isError, data, error} = useQuery<SkillData[]>({
         queryKey: ["skills"],
         queryFn: fetchSkills,
     });
 
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (isError && error) {
+        // @ts-ignore
+        return <div>Error: {error?.message}</div>;
+    }
+
     return (
-        <PageTransition path={"/skills"}>
+        <PageTransition path={pathName}>
             <main className="container mt-24 mb-40">
                 <motion.h1
                     variants={animations.headingVariants}
@@ -61,23 +73,33 @@ const Skills = () => {
                 </motion.p>
 
                 <section
-                    className="bg-blue-5000 p-3 mt-16 mb-32 mx-auto md:max-w-3xl grid gap-x-0 gap-y-10 grid-cols-3 lg:max-w-3xl lg:ml-0 lg:grid-cols-6"
+                    className="bg-blue-5000 p-3 mt-16 mb-32 mx-auto md:max-w-3xl grid gap-10 grid-cols-2 md:grid-cols-3 lg:max-w-3xl lg:ml-0 lg:gap-y-20 lg:grid-cols-6"
                 >
-                    {Array(25).fill(0).map((_, i) => (
+                    {data && data.map((skill, i) => (
                         <motion.div
-                            key={i}
-                            className="bg-yellow-3000 flex items-center justify-center rounded-full w-fit h-fit"
+                            key={skill._id}
+                            className="relative mx-auto bg-yellow-3000 flex items-center justify-center rounded-full w-20 h-20 md:w-24 md:h-24"
                             variants={staggerVariants}
                             initial="hidden"
                             animate="visible"
-                            transition={{duration: 0.7, delay: i * 0.3}}
+                            transition={{duration: 0.3, delay: i * 0.3, ease: "easeInOut"}}
                             whileHover={{
                                 scale: 1.2,
                                 boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-                                transition: {duration: 0.25, ease: "easeInOut"}
+                                // transition: {duration: 0.1, ease: "easeInOut"}
                             }}
                         >
-                            <Image src={images.reactIcon.src} alt={"react"} width={150} height={150}/>
+                            <p className="absolute -top-5 text-xs font-bold text-center w-full">
+                                {skill.skillName}
+                            </p>
+                            <Image
+                                src={urlForImage(skill.image.asset)?.url()}
+                                alt={"react"}
+                                fill={true}
+                                // width={90}
+                                // height={90}
+                                className={"rounded-full object-contain"}
+                            />
                         </motion.div>
                     ))}
                 </section>

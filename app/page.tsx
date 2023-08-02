@@ -8,9 +8,11 @@ import {animations, headerTaglines} from "@/utils/client";
 import Image from "next/image";
 import {images} from "@/public";
 import {useEffect, useState} from "react";
+import {usePathname} from "next/navigation";
 
 
 export default function Home() {
+    const pathName = usePathname();
     const [animation, setAnimation] = useState("hidden");
 
     useEffect(() => {
@@ -20,7 +22,7 @@ export default function Home() {
     }, []);
 
     return (
-        <PageTransition path={"/home"}>
+        <PageTransition path={pathName}>
             <main className="container relative bg-red-2000 mt-24 mb-40">
                 <motion.h1
                     variants={animations.headingVariants}
@@ -67,7 +69,7 @@ export default function Home() {
                         alt={"Panda Image"}
                         width={500}
                         height={500}
-                        className={"object-contain mx-auto xl:w-[700px] xl:h-[700px]"}
+                        className={"hidden object-contain mx-auto lg:block xl:w-[700px] xl:h-[700px]"}
                     />
                 </motion.div>
 
