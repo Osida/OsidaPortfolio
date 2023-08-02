@@ -1,8 +1,8 @@
-import {NextApiRequest} from "next";
 import {sanityClient} from "@/sanity/lib/sanityClient";
 import {sanityQueries} from "@/sanity/quries";
+import {NextRequest} from "next/server";
 
-export const GET = async (req: NextApiRequest, {params}: { params: { id: string } }) => {
+export const GET = async (req: NextRequest, {params}: { params: { id: string } }) => {
     try {
         const {id} = params;
 
