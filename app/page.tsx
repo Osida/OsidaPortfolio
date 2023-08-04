@@ -1,14 +1,14 @@
 "use client";
 import {motion} from "framer-motion";
-import {FaArrowRightLong} from "react-icons/fa6";
-import Link from "next/link";
-import PageTransition from "@/components/client/layoutTransition/PageTransition";
+import SlideFadeTransition from "@/lib/framerMotion/SlideFadeTransition";
 import {Typewriter} from "react-simple-typewriter";
-import {animations, headerTaglines} from "@/utils/client";
+import {headerTaglines} from "@/constants";
+import {animations} from "@/lib";
 import Image from "next/image";
 import {images} from "@/public";
 import {useEffect, useState} from "react";
 import {usePathname} from "next/navigation";
+import {AnimatedArrow} from "@/components/client";
 
 
 export default function Home() {
@@ -22,7 +22,7 @@ export default function Home() {
     }, []);
 
     return (
-        <PageTransition path={pathName}>
+        <SlideFadeTransition path={pathName}>
             <main className="container relative bg-red-2000 mt-24 mb-40">
                 <motion.h1
                     variants={animations.headingVariants}
@@ -31,17 +31,10 @@ export default function Home() {
                     className={`font-roboto text-h1 font-h1 mb-5 text-center lg:mb-8 lg:text-6xl lg:text-left lg:max-w-3xl`}
                 >
                     Transforming Ideas <br/>
-                    <span className="text-primary">
-                        <Typewriter
-                            words={[...headerTaglines]}
-                            loop={5}
-                            cursor
-                            cursorStyle="_"
-                            typeSpeed={150}
-                            deleteSpeed={100}
-                            delaySpeed={1000}
-                        />
-                    </span>
+                    <div className="text-primary">
+                        <Typewriter words={[...headerTaglines]} loop={5} cursor cursorStyle="_" typeSpeed={150}
+                                    deleteSpeed={100} delaySpeed={1000}/>
+                    </div>
                 </motion.h1>
 
                 <motion.p
@@ -58,52 +51,22 @@ export default function Home() {
                 <div className="bg-amber-2000 flex items-center justify-center lg:justify-start lg:pl-3 mt-16">
                     <AnimatedArrow/>
                 </div>
+
                 <motion.div
                     variants={animations.imageVariants}
                     initial="hidden"
                     animate={animation}
-                    className="z-0 relative bg-emerald-2000 lg:absolute lg:top-20 lg:right-20 xl:top-40 xl:right-30"
+                    className="z-0 relative bg-emerald-2000 lg:absolute lg:top-20 lg:right-10 xl:top-32 xl:right-20"
                 >
                     <Image
                         src={images.panda.src}
                         alt={"Panda Image"}
                         width={500}
                         height={500}
-                        className={"hidden object-contain mx-auto lg:block xl:w-[700px] xl:h-[700px]"}
+                        className={"hidden object-contain mx-auto lg:block xl:w-[650px] xl:h-[650px]"}
                     />
                 </motion.div>
-
             </main>
-        </PageTransition>
+        </SlideFadeTransition>
     );
 }
-
-
-const AnimatedArrow = () => {
-    const arrowVariants = {
-        left: {x: -10},
-        right: {x: 10},
-        bounce: {y: [0, -10, 0], transition: {duration: 0.8, repeat: Infinity, ease: "easeInOut"}},
-    };
-
-    return (
-        <motion.div
-            variants={arrowVariants}
-            initial="left"
-            animate="right"
-            whileHover="bounce"
-            transition={{
-                repeat: Infinity,
-                repeatType: "reverse",
-                duration: 2,
-            }}
-            whileTap={{scale: 0.9, transition: {duration: 0.3, ease: "easeInOut"}}}
-            className="bg-blue-2000 flex w-fit h-fit flex-col space-y-2 items-center mb-6"
-        >
-            <p className="font-roboto font-overline uppercase">My Projects</p>
-            <Link href={"/projects"}>
-                <FaArrowRightLong className="text-secondary w-16 h-16 lg:w-20 lg:h-20"/>
-            </Link>
-        </motion.div>
-    );
-};

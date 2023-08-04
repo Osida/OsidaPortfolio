@@ -1,4 +1,7 @@
 /** @type {import("tailwindcss").Config} */
+import typography from "./styles/tailwind/typography";
+import {darkTheme, lightTheme} from "./styles/tailwind/themes";
+
 module.exports = {
     content: [
         "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,62 +11,12 @@ module.exports = {
     ],
     theme: {
         extend: {
-            fontFamily: {
-                "roboto": ["Roboto", "sans-serif"],
-                "open-sans": ["Open Sans", "sans-serif"],
-            },
-            fontSize: {
-                "h1": "2.5em",
-                "h2": "2em",
-                "h3": "1.75em",
-                "h4": "1.5em",
-                "h5": "1.25em",
-                "h6": "1em",
-                "subtitle1": "1em",
-                "subtitle2": "0.875em",
-                "body1": "1em",
-                "body2": "0.875em",
-                "button": "1em",
-                "caption": "0.75em",
-                "overline": "0.75em",
-            },
-            fontWeight: {
-                "h1": "bold",
-                "h2": "bold",
-                "h3": "bold",
-                "h4": "bold",
-                "h5": "bold",
-                "h6": "bold",
-                "subtitle1": "normal",
-                "subtitle2": "normal",
-                "body1": "normal",
-                "body2": "normal",
-                "button": "500",
-                "caption": "normal",
-                "overline": "normal",
-            },
-        },
-        light: {
-            primary: "#1E88E5",
-            secondary: "#7CB342",
-            accent: "#F4511E",
-            neutral: "#757575",
-            "base-100": "#FAFAFA",
-            info: "#039BE5",
-            success: "#43A047",
-            warning: "#FFB300",
-            error: "#E53935",
-        },
-        dark: {
-            primary: "#90CAF9",
-            secondary: "#C5E1A5",
-            accent: "#FF7043",
-            neutral: "#ECEFF1",
-            "base-100": "#263238",
-            info: "#4FC3F7",
-            success: "#81C784",
-            warning: "#FFD54F",
-            error: "#EF5350",
+            fontFamily: typography.fontFamily,
+            fontWeight: typography.fontWeight,
+            colors: {
+                light: lightTheme,
+                dark: darkTheme,
+            }
         },
     },
     plugins: [
@@ -72,28 +25,8 @@ module.exports = {
     daisyui: {
         themes: [
             {
-                light: {
-                    primary: "#1E88E5",
-                    secondary: "#7CB342",
-                    accent: "#F4511E",
-                    neutral: "#757575",
-                    "base-100": "#FAFAFA",
-                    info: "#039BE5",
-                    success: "#43A047",
-                    warning: "#FFB300",
-                    error: "#E53935",
-                },
-                dark: {
-                    primary: "#90CAF9",
-                    secondary: "#C5E1A5",
-                    accent: "#FF7043",
-                    neutral: "#ECEFF1",
-                    "base-100": "#263238",
-                    info: "#4FC3F7",
-                    success: "#81C784",
-                    warning: "#FFD54F",
-                    error: "#EF5350",
-                },
+                light: lightTheme,
+                dark: darkTheme,
             }
         ],
     },

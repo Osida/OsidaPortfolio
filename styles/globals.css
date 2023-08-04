@@ -3,13 +3,15 @@
 @tailwind utilities;
 
 :root[data-theme='light'] {
-    --color-background: white;
-    --color-text: black;
+    --color-background: #FAFAFA; /* base-100 */
+    --color-text: #757575; /* neutral */
+    --color-nav-icon: #757575; /* neutral */
 }
 
 :root[data-theme='dark'] {
-    --color-background: black;
-    --color-text: white;
+    --color-background: #263238; /* base-100 */
+    --color-text: #ECEFF1; /* neutral */
+    --color-nav-icon: #ECEFF1; /* neutral */
 }
 
 body {
@@ -24,11 +26,8 @@ body {
     }
 
     .nav-icon {
-        @apply w-4 h-4 lg:w-6 lg:h-6 text-gray-500 transition-colors duration-200 ease-in hover:text-accent;
-    }
-
-    .banner-icon {
-        @apply nav-icon;
+        @apply w-4 h-4 lg:w-6 lg:h-6 transition-colors duration-200 ease-in hover:text-accent;
+        color: var(--color-nav-icon);
     }
 
     .h1-styles {

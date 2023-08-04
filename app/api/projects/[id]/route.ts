@@ -1,5 +1,5 @@
-import {sanityClient} from "@/sanity/lib/sanityClient";
-import {sanityQueries} from "@/sanity/quries";
+import {sanityClient} from "@/lib/sanity/sanityClient";
+import {sanityQueries} from "@/lib/sanity/quries";
 import {NextRequest} from "next/server";
 
 export const GET = async (req: NextRequest, {params}: { params: { id: string } }) => {

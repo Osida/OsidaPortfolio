@@ -1,4 +1,17 @@
-interface Image {
+import {ReactNode} from "react";
+
+export type ThemeType = "light" | "dark";
+
+export type ThemeContextType = {
+    theme: ThemeType;
+    setTheme: (theme: ThemeType) => void;
+};
+
+export type ThemeProviderType = {
+    children: ReactNode | ReactNode[];
+};
+
+interface ImageSchema {
     _type: string;
     asset: {
         _ref: string;
@@ -6,41 +19,41 @@ interface Image {
     };
 }
 
-interface Slug {
+interface SlugSchema {
     current: string;
     _type: string;
 }
 
-interface SkillData {
+export interface SkillSchema {
     _createdAt: string;
     _rev: string;
     _type: string;
     _id: string;
     _updatedAt: string;
     skillName: string;
-    image: Image;
+    image: ImageSchema;
 }
 
-interface ServiceData {
+export interface ServiceSchema {
     _rev: string;
     _type: string;
     serviceDescription: string;
     _id: string;
     serviceName: string;
     imageAlt: string;
-    slug: Slug;
-    image: Image;
+    slug: SlugSchema;
+    image: ImageSchema;
     _createdAt: string;
     _updatedAt: string;
 }
 
-interface ProjectData {
+export interface ProjectSchema {
     _createdAt: string;
     _id: string;
     status: string;
-    skills: SkillData[];
-    illustration: Image;
-    images: Image[];
+    skills: SkillSchema[];
+    illustration: ImageSchema;
+    featureImage: ImageSchema;
     _type: string;
     projectDescription: string;
     projectType: string;

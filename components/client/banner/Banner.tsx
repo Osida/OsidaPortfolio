@@ -1,17 +1,22 @@
 "use client";
-import React, {useEffect, useState} from "react";
-import {socialLinks} from "@/constants";
-import {motion, useAnimation} from "framer-motion";
 import Link from "next/link";
-import {linkVariants} from "@/components/client/nav/Nav";
-import {ThemeToggleButton} from "@/components/client/theme/ThemeToggleButton";
+import React, {useEffect, useState} from "react";
+import {motion, useAnimation} from "framer-motion";
+import {socialLinks} from "@/constants";
+import {bannerLinkVariants} from "@/lib/framerMotion/animations";
+import {ThemeToggle} from "@/components/client/theme/ThemeToggle";
+import {bannerMotionStyles, transition} from "@/components/client/banner/motionStyles";
 
-const Banner = () => {
+interface BannerProps {
+    title: string;
+}
+
+const Banner = ({title}: BannerProps) => {
     const controls = useAnimation();
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        controls.start({opacity: 1, y: 0, transition: {duration: 0.8, ease: "easeInOut"}});
+        controls.start({...bannerMotionStyles.animate});
         setIsLoaded(true);
     }, [controls]);
 
@@ -19,18 +24,20 @@ const Banner = () => {
         <motion.article
             initial={{opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : -50}}
             animate={controls}
-            className="bg-blue-2000 w-full container pt-5 flex flex-col justify-center items-center lg:flex-row lg:items-end lg:justify-between ">
+            transition={transition}
+            className="bg-blue-2000 w-full container pt-5 flex flex-col justify-center items-center lg:flex-row lg:items-end lg:justify-between">
+
             <Link href={"/"}>
-                <h3 className="font-roboto text-h3 font-h3 cursor-pointer">
-                    <span className="font-bold">Osida</span> Richards<span className="text-accent">.</span>
+                <h3 className="font-roboto font-h3 text-xl cursor-pointer">
+                    {title}<span className="text-accent">.</span>
                 </h3>
             </Link>
 
             <div className="space-x-3 flex items-center">
-                {socialLinks.map(({path, name, Icon}) => (
+                {socialLinks.map(({path, name, Icon}, _) => (
                     <motion.li
                         key={name}
-                        variants={linkVariants}
+                        variants={bannerLinkVariants}
                         whileTap="tap"
                         whileHover="hover"
                         className="btn btn-ghost"
@@ -38,7 +45,8 @@ const Banner = () => {
                         <a href={path} target="_blank" rel="noopener noreferrer">{Icon}</a>
                     </motion.li>
                 ))}
-                <ThemeToggleButton styles={"nav-icon"}/>
+
+                <ThemeToggle styles={"nav-icon"}/>
             </div>
         </motion.article>
     );

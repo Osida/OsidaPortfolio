@@ -1,12 +1,11 @@
-// "use client";
 import "../styles/globals.css";
 import type {Metadata} from "next";
 import {Inter} from "next/font/google";
 import React from "react";
 import Nav from "@/components/client/nav/Nav";
 import Banner from "@/components/client/banner/Banner";
-import {ThemeProvider} from "@/components/client/theme/Theme";
-import QueryProvider from "@/lib/tanstack-query/QueryProvider";
+import {ThemeProvider} from "@/components/client/theme/ThemeProvider";
+import {QueryProvider} from "@/lib";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -24,13 +23,12 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
             <QueryProvider>
                 <ThemeProvider>
                     <Nav/>
-                    <Banner/>
+                    <Banner title={"Osida Richards"}/>
                     {children}
                 </ThemeProvider>
             </QueryProvider>
         </div>
         </body>
         </html>
-    )
-        ;
+    );
 }

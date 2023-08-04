@@ -1,42 +1,32 @@
 "use client";
-import React from "react";
+import React, {useMemo} from "react";
 import {motion} from "framer-motion";
-import PageTransition from "@/components/client/layoutTransition/PageTransition";
-import {animations} from "@/utils/client";
 import {Typewriter} from "react-simple-typewriter";
-import Image from "next/image";
-import axios from "axios";
-import {useQuery} from "@tanstack/react-query";
-import {urlForImage} from "@/sanity/lib/image";
 import {usePathname} from "next/navigation";
-import {endpoints} from "@/constants";
+import {animations, SlideFadeTransition} from "@/lib";
+import {DataFetchingError} from "@/utils/exceptions";
+import {useServices} from "@/hooks";
+import {ServiceCard} from "@/components/client";
 
 
 const Services = () => {
     const pathName = usePathname();
+    const {isLoading, isError, data, error} = useServices();
 
-    const fetchServices = async () => {
-        const {data, status} = await axios.get<ServiceData[]>(endpoints.services);
-        if (status !== 200) throw new Error("Error fetching services");
-        return data;
-    };
-
-    const {isLoading, isError, data, error} = useQuery<ServiceData[]>({
-        queryKey: ["services"],
-        queryFn: fetchServices,
-    });
+    const servicesItems = useMemo(() => {
+        return data?.map((service, _) => <ServiceCard key={service.serviceName} service={service}/>);
+    }, [data]);
 
     if (isLoading) {
         return <div>Loading...</div>;
     }
 
     if (isError && error) {
-        // @ts-ignore
-        return <div>Error: {error?.message}</div>;
+        throw new DataFetchingError();
     }
 
     return (
-        <PageTransition path={pathName}>
+        <SlideFadeTransition path={pathName}>
             <main className="container bg-red-2000 mt-24 mb-40">
                 <motion.h1
                     variants={animations.headingVariants}
@@ -71,37 +61,10 @@ const Services = () => {
                 {/* card container*/}
                 <section
                     className="bg-pink-2000 p-3 mt-16 mb-32 mx-auto space-y-10 md:max-w-3xl md:grid md:space-y-0 md:gap-10 md:grid-cols-2 lg:mx-0 lg:max-w-6xl lg:grid-cols-3">
-                    {
-                        data && data.map((service, i) => (
-                            // card component
-                            <motion.div
-                                key={i}
-                                variants={animations.cardVariants}
-                                whileHover="hover"
-                                initial="initial"
-                                className="card mx-auto max-w-md bg-base-100 shadow-xl break-inside-avoid-auto lg:mx-0 relative"
-                            >
-                                <figure className="relative rounded-xl">
-                                    <Image src={urlForImage(service.image.asset)?.url()} alt="service1" width={500}
-                                           height={500}
-                                           className="w-full h-full object-contain rounded-xl"/>
-                                    <div
-                                        className="absolute top-0 left-0 w-full h-full bg-gray-800 opacity-80 hover:opacity-0 transition-opacity duration-500 space-y-10 px-8 py-14"/>
-                                    <div
-                                        className="absolute top-0 left-0 w-full h-full space-y-10 px-8 py-14 text-white transition-opacity duration-500 hover:opacity-100">
-                                        <h2 className="font-roboto text-h3 font-h3">
-                                            {service.serviceName}
-                                        </h2>
-                                        <p className="font-open-sans text-body2 font-body2 ">
-                                            {service.serviceDescription}
-                                        </p>
-                                    </div>
-                                </figure>
-                            </motion.div>
-                        ))}
+                    {servicesItems}
                 </section>
             </main>
-        </PageTransition>
+        </SlideFadeTransition>
     );
 };
 

@@ -1,46 +1,31 @@
 "use client";
-import React from "react";
-import Image from "next/image";
+import React, {useMemo} from "react";
 import {motion} from "framer-motion";
-import PageTransition from "@/components/client/layoutTransition/PageTransition";
-import {animations} from "@/utils/client";
 import {Typewriter} from "react-simple-typewriter";
-import {useQuery} from "@tanstack/react-query";
-import axios from "axios";
-import {urlForImage} from "@/sanity/lib/image";
 import {usePathname} from "next/navigation";
-import {endpoints} from "@/constants";
+import {animations, SlideFadeTransition} from "@/lib";
+import {useSkills} from "@/hooks";
+import {SkillItem} from "@/components/client";
+import {DataFetchingError} from "@/utils/exceptions";
 
 const Skills = () => {
     const pathName = usePathname();
+    const {isLoading, isError, data, error} = useSkills();
 
-    const staggerVariants = {
-        hidden: {opacity: 0},
-        visible: {opacity: 1},
-    };
-
-    const fetchSkills = async () => {
-        const {data, status} = await axios.get<SkillData[]>(endpoints.skills);
-        if (status !== 200) throw new Error("Error fetching skills");
-        return data;
-    };
-
-    const {isLoading, isError, data, error} = useQuery<SkillData[]>({
-        queryKey: ["skills"],
-        queryFn: fetchSkills,
-    });
+    const skillsItems = useMemo(() => {
+        return data?.map((skill, i) => <SkillItem key={skill._id} skill={skill} index={i}/>);
+    }, [data]);
 
     if (isLoading) {
         return <div>Loading...</div>;
     }
 
     if (isError && error) {
-        // @ts-ignore
-        return <div>Error: {error?.message}</div>;
+        throw new DataFetchingError();
     }
 
     return (
-        <PageTransition path={pathName}>
+        <SlideFadeTransition path={pathName}>
             <main className="container mt-24 mb-40">
                 <motion.h1
                     variants={animations.headingVariants}
@@ -75,36 +60,10 @@ const Skills = () => {
                 <section
                     className="bg-blue-5000 p-3 mt-16 mb-32 mx-auto md:max-w-3xl grid gap-10 grid-cols-2 md:grid-cols-3 lg:max-w-3xl lg:ml-0 lg:gap-y-20 lg:grid-cols-6"
                 >
-                    {data && data.map((skill, i) => (
-                        <motion.div
-                            key={skill._id}
-                            className="relative mx-auto bg-yellow-3000 flex items-center justify-center rounded-full w-20 h-20 md:w-24 md:h-24"
-                            variants={staggerVariants}
-                            initial="hidden"
-                            animate="visible"
-                            transition={{duration: 0.3, delay: i * 0.3, ease: "easeInOut"}}
-                            whileHover={{
-                                scale: 1.2,
-                                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-                                // transition: {duration: 0.1, ease: "easeInOut"}
-                            }}
-                        >
-                            <p className="absolute -top-5 text-xs font-bold text-center w-full">
-                                {skill.skillName}
-                            </p>
-                            <Image
-                                src={urlForImage(skill.image.asset)?.url()}
-                                alt={"react"}
-                                fill={true}
-                                // width={90}
-                                // height={90}
-                                className={"rounded-full object-contain"}
-                            />
-                        </motion.div>
-                    ))}
+                    {skillsItems}
                 </section>
             </main>
-        </PageTransition>
+        </SlideFadeTransition>
     );
 };
 

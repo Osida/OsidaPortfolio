@@ -12,7 +12,7 @@ export default function Error({error, reset,}: { error: Error & { digest?: strin
 
     return (
         <main className={"min-h-screen bg-base-100 flex items-center justify-center text-neutral"}>
-            <section className="p-8 rounded-xl bg-neutral shadow-2xl space-y-6 text-white max-w-4xl">
+            <section className="p-8 rounded-xl bg-gray-950 shadow-2xl space-y-6 text-white max-w-4xl">
                 <header className="flex items-center space-x-2">
                     <AiFillCloseCircle className="h-6 w-6 text-error"/>
                     <h2 className="text-2xl font-bold">Oops! Something went wrong!</h2>
