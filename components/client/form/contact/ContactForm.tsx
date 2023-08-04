@@ -4,19 +4,34 @@ import ErrorText from "@/components/client/form/ErrorText";
 import FormInput from "@/components/client/form/FormInput";
 import {FormDataType} from "@/app/contact/page";
 import {validationRules} from "@/components/client/form/contact/formValidation";
+import {Slide, toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface ContactFormProps {
     onSubmit: (data: FormDataType) => void;
+    isLoading: boolean;
 }
 
-const ContactForm = ({onSubmit}: ContactFormProps) => {
+const ContactForm = ({onSubmit, isLoading}: ContactFormProps) => {
     const {register, handleSubmit, formState: {errors}, reset} = useForm<FormDataType>();
+
+    const onSubmitHandler = async (data: FormDataType) => {
+        try {
+            onSubmit(data);
+            toast.success("Form submitted successfully!");
+            reset();
+        } catch (error) {
+            toast.error("An error occurred while submitting the form.");
+        }
+    };
+
 
     return (
         <form
             className="bg-amber-2000 form-control w-full max-w-xs mx-auto space-y-2 mb-20 md:max-w-xl lg:ml-0 "
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onSubmitHandler)}
         >
+            {/*{toast.success("Form submitted successfully!")}*/}
             <div className="flex flex-col md:flex-row md:space-x-4">
                 <div>
                     <label className="label space-x-4"><span className="label-text">Name</span></label>
@@ -64,7 +79,7 @@ const ContactForm = ({onSubmit}: ContactFormProps) => {
             </div>
 
             <div className="w-full pt-5 bg-red-2000">
-                <button type="submit" className="w-full btn btn-accent text-base-100">
+                <button type="submit" className="w-full btn btn-accent text-base-100" disabled={isLoading}>
                     Submit
                 </button>
             </div>

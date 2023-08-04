@@ -1,12 +1,15 @@
 "use client";
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {images} from "@/public";
 import {animations, SlideFadeTransition} from "@/lib";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import {Typewriter} from "react-simple-typewriter";
-import {usePathname, useRouter} from "next/navigation";
+import {usePathname} from "next/navigation";
 import {ContactForm} from "@/components/client";
+import useContactFormMutation from "@/hooks/useContactFormMutation";
+import {ToastContainer} from "react-toastify";
+import {ThemeContext} from "@/components/client/theme/ThemeProvider";
 
 // Define the generic form data interface
 export interface FormData {
@@ -23,8 +26,8 @@ export interface ContactFormData {
 export type FormDataType = ContactFormData | FormData;
 
 const Contact = () => {
-    const router = useRouter();
     const pathName = usePathname();
+    const {theme} = useContext(ThemeContext);
     const [animation, setAnimation] = useState("hidden");
 
     useEffect(() => {
@@ -33,9 +36,7 @@ const Contact = () => {
         return () => clearTimeout(timer);
     }, []);
 
-    const handleSubmitForm = (data: FormDataType) => {
-        console.log("Form data: ", data);
-    };
+    const {handleSubmitForm, contactFormMutation} = useContactFormMutation();
 
     return (
         <SlideFadeTransition path={pathName}>
@@ -59,7 +60,7 @@ const Contact = () => {
                     </span>
                 </motion.h1>
 
-                <ContactForm onSubmit={handleSubmitForm}/>
+                <ContactForm onSubmit={handleSubmitForm} isLoading={contactFormMutation.isLoading}/>
 
                 <motion.div
                     variants={animations.imageVariants}
@@ -76,6 +77,7 @@ const Contact = () => {
                     />
                 </motion.div>
             </main>
+            <ToastContainer theme={theme} newestOnTop={true} />
         </SlideFadeTransition>
     );
 };

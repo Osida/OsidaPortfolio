@@ -6,6 +6,7 @@ import Nav from "@/components/client/nav/Nav";
 import Banner from "@/components/client/banner/Banner";
 import {ThemeProvider} from "@/components/client/theme/ThemeProvider";
 import {QueryProvider} from "@/lib";
+import {ToastContainer} from "react-toastify";
 
 const inter = Inter({subsets: ["latin"]});
 

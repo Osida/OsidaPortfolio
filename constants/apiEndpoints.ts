@@ -5,4 +5,5 @@ export const apiEndpoints = {
     project: (id: string) => `${baseUrl}/projects/${id}`,
     skills: `${baseUrl}/skills`,
     services: `${baseUrl}/services`,
+    contact: `${baseUrl}/email`,
 };
