@@ -1,16 +1,3 @@
-import {ReactNode} from "react";
-
-export type ThemeType = "light" | "dark";
-
-export type ThemeContextType = {
-    theme: ThemeType;
-    setTheme: (theme: ThemeType) => void;
-};
-
-export type ThemeProviderType = {
-    children: ReactNode | ReactNode[];
-};
-
 interface ImageSchema {
     _type: string;
     asset: {

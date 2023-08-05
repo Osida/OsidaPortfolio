@@ -1,27 +1,35 @@
 export const lightTheme = {
-    primary: "#1E88E5",
-    secondary: "#7CB342",
-    accent: "#F4511E",
-    neutral: "#757575",
-    "base-100": "#FAFAFA",
-    info: "#039BE5",
-    success: "#43A047",
-    warning: "#FFB300",
-    error: "#E53935",
-    "nav-icon": "#757575",
-    "nav-icon-hover": "#F4511E",
+    primary: "rgb(248, 248, 248)", /* White */
+    secondary: "rgb(234, 234, 234)", /* Light Gray */
+    accent1: "rgb(74, 144, 226)", /* Sky Blue */
+    accent2: "rgb(0, 184, 148)", /* Light Green */
 };
 
 export const darkTheme = {
-    primary: "#90CAF9",
-    secondary: "#C5E1A5",
-    accent: "#FF7043",
-    neutral: "#ECEFF1",
-    "base-100": "#263238",
-    info: "#4FC3F7",
-    success: "#81C784",
-    warning: "#FFD54F",
-    error: "#EF5350",
-    "nav-icon": "#ECEFF1",
-    "nav-icon-hover": "#FF7043",
+    primary: "rgb(27, 27, 27)", /* Black */
+    secondary: "rgb(47, 47, 47)", /* Dark Gray */
+    accent1: "rgb(232, 67, 147)", /* Pink */
+    accent2: "rgb(52, 152, 219)", /* Dark Blue */
 };
+
+const lightColorScheme = {
+    backgroundPrimary: lightTheme.primary, // White
+    backgroundSecondary: lightTheme.secondary, // Light Gray
+    textPrimary: darkTheme.primary, // Black
+    textSecondary: darkTheme.secondary, // Dark Gray
+    buttonPrimary: lightTheme.accent1, // Sky Blue
+    buttonSecondary: lightTheme.accent2, // Light Green
+    icon: darkTheme.primary, // Black
+    iconHover: lightTheme.accent1, // Sky Blue
+}
+
+const darkColorScheme = {
+    backgroundPrimary: darkTheme.primary, // Black
+    backgroundSecondary: darkTheme.secondary, // Dark Gray
+    textPrimary: lightTheme.primary, // White
+    textSecondary: lightTheme.secondary, // Light Gray
+    buttonPrimary: darkTheme.accent1, // Pink
+    buttonSecondary: darkTheme.accent2, // Dark Blue
+    icon: lightTheme.primary, // White
+    iconHover: darkTheme.accent1, // Pink
+}

@@ -25,11 +25,11 @@ const Banner = ({title}: BannerProps) => {
             initial={{opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : -50}}
             animate={controls}
             transition={transition}
-            className="bg-blue-2000 w-full container pt-5 flex flex-col justify-center items-center lg:flex-row lg:items-end lg:justify-between">
+            className="w-full container pt-5 flex flex-col justify-center items-center lg:flex-row lg:items-end lg:justify-between">
 
             <Link href={"/"}>
-                <h3 className="font-roboto font-h3 text-xl cursor-pointer">
-                    {title}<span className="text-accent">.</span>
+                <h3 className="">
+                    {title}<span className="text-accent1">.</span>
                 </h3>
             </Link>
 
@@ -46,7 +46,13 @@ const Banner = ({title}: BannerProps) => {
                     </motion.li>
                 ))}
 
-                <ThemeToggle styles={"nav-icon"}/>
+                <motion.div
+                    variants={bannerLinkVariants}
+                    whileTap="tap"
+                    whileHover="hover"
+                >
+                    <ThemeToggle styles={"nav-icon"}/>
+                </motion.div>
             </div>
         </motion.article>
     );

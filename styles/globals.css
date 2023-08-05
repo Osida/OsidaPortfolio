@@ -2,52 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-:root[data-theme='light'] {
-    --color-background: #FAFAFA; /* base-100 */
-    --color-text: #757575; /* neutral */
-    --color-nav-icon: #757575; /* neutral */
-}
+@layer base {
+    :root[data-theme='light'] {
+        /* tailwind config */
+        --color-primary: 248 248 248; /* White */
+        --color-secondary: 234 234 234; /* Light Gray */
+        --color-accent1: 74 144 226; /* Sky Blue */
+        --color-accent2: 0 184 148; /* Light Green */
 
-:root[data-theme='dark'] {
-    --color-background: #263238; /* base-100 */
-    --color-text: #ECEFF1; /* neutral */
-    --color-nav-icon: #ECEFF1; /* neutral */
-}
+        --color-font: 27 27 27; /* Black */
+    }
 
-body {
-    background-color: var(--color-background);
-    color: var(--color-text);
-}
+    :root[data-theme='dark'] {
+        /* tailwind config */
+        --color-primary: 27 27 27; /* Black */
+        --color-secondary: 47 47 47; /* Dark Gray */
+        --color-accent1: 232 67 147; /* Pink */
+        --color-accent2: 52 152 219; /* Dark Blue */
 
-.Toastify__toast {
-    padding: 1rem;
-    border-radius: 1rem;
+        --color-font: 234 234 234; /* Light Gray */
+    }
 }
-
 
 @layer components {
     .container {
         @apply mx-auto px-6 max-w-7xl;
     }
 
+    .icon-color {
+        color: var(--color-font);
+    }
+
+    .icon-color:hover {
+        color: var(--color-accent2);
+    }
+
+    .theme-transition {
+        @apply transition-colors duration-300 ease-in-out;
+    }
+
     .nav-icon {
-        @apply w-4 h-4 lg:w-6 lg:h-6 transition-colors duration-200 ease-in hover:text-accent;
-        color: var(--color-nav-icon);
-    }
-
-    .h1-styles {
-        @apply text-5xl font-bold sm:text-6xl;
-    }
-
-    .my-masonry-grid {
-        @apply flex w-auto
-    }
-
-    .my-masonry-grid_column {
-        @apply bg-clip-padding
-    }
-
-    .my-masonry-grid_column > div {
-        @apply mb-4
+        @apply w-4 h-4 lg:w-6 lg:h-6 cursor-pointer text-fontColor theme-transition hover:text-accent1;
     }
 }

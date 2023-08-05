@@ -18,8 +18,8 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: { children: React.ReactNode }) {
 
     return (
-        <html lang="en">
-        <body className={`${inter.className}`}>
+        <html lang="en" data-theme="dark">
+        <body className={`${inter.className} bg-primary text-fontColor theme-transition`}>
         <div className="relative min-h-screen mx-auto overflow-x-hidden">
             <QueryProvider>
                 <ThemeProvider>

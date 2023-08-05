@@ -20,11 +20,11 @@ const AnimatedArrow = () => {
             whileHover="bounce"
             transition={{repeat: Infinity, repeatType: "reverse", duration: 2,}}
             whileTap={{ scale: 0.9, transition: { duration: 0.3, ease: "easeInOut" } }}
-            className="bg-blue-2000 flex w-fit h-fit flex-col space-y-2 items-center mb-6"
+            className="flex w-fit h-fit flex-col space-y-2 items-center mb-6"
         >
-            <p className="font-roboto font-overline uppercase">My Projects</p>
+            <p className="">My Projects</p>
             <Link href={"/projects"}>
-                <FaArrowRightLong className="text-secondary w-16 h-16 lg:w-20 lg:h-20" />
+                <FaArrowRightLong className=" w-16 h-16 text-accent2 lg:w-20 lg:h-20" />
             </Link>
         </motion.div>
     );

@@ -3,6 +3,7 @@ import typography from "./styles/tailwind/typography";
 import {darkTheme, lightTheme} from "./styles/tailwind/themes";
 
 module.exports = {
+    darkMode: "class",
     content: [
         "./pages/**/*.{js,ts,jsx,tsx,mdx}",
         "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -16,18 +17,23 @@ module.exports = {
             colors: {
                 light: lightTheme,
                 dark: darkTheme,
-            }
+                primary: "rgb(var(--color-primary) / <alpha-value>)",
+                secondary: "rgb(var(--color-secondary) / <alpha-value>)",
+                accent1: "rgb(var(--color-accent1) / <alpha-value>)",
+                accent2: "rgb(var(--color-accent2) / <alpha-value>)",
+                fontColor: "rgb(var(--color-font) / <alpha-value>)",
+            },
         },
     },
     plugins: [
         require("daisyui"),
     ],
-    daisyui: {
-        themes: [
-            {
-                light: lightTheme,
-                dark: darkTheme,
-            }
-        ],
-    },
+    // daisyui: {
+    //     themes: [
+    //         {
+    //             light: lightTheme,
+    //             dark: darkTheme,
+    //         }
+    //     ],
+    // },
 };

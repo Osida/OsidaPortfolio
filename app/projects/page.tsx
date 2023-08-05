@@ -31,10 +31,10 @@ const Projects = () => {
                     variants={animations.headingVariants}
                     initial="hidden"
                     animate="visible"
-                    className="font-roboto text-h1 font-h1 text-center lg:text-left mb-5 lg:max-w-xl"
+                    className="text-center lg:text-left mb-5 lg:max-w-xl"
                 >
                     My
-                    <span className="text-primary">
+                    <span className="text-accent2">
                         <Typewriter
                             words={["", " Projects"]}
                             cursor

@@ -13,7 +13,7 @@ const Nav = () => {
             initial={navMotionStyles.initial}
             animate={navMotionStyles.animate}
             transition={transition}
-            className={`z-50 fixed bottom-0 left-0 right-0 py-2 shadow-xl bg-gray-800 ease-in-out duration-500 transition-al lg:max-w-3xl lg:mx-auto lg:rounded-full lg:droop-shadow-md lg:bottom-4`}
+            className={`backdrop-blur-sm bg-secondary/30 z-50 fixed bottom-0 left-0 right-0 py-2 lg:max-w-3xl lg:mx-auto lg:rounded-full lg:shadow-lg lg:bottom-4`}
         >
             <ul className="w-full h-full flex items-center justify-evenly">
                 {navLinks.map(({path, name, Icon}: NavLinkSchema, _) => (

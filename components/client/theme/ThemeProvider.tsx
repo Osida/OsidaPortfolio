@@ -1,6 +1,16 @@
 "use client";
-import React, {createContext, useEffect, useState} from "react";
-import {ThemeType, ThemeContextType, ThemeProviderType} from "@/types";
+import React, {createContext, ReactNode, useEffect, useState} from "react";
+
+export type ThemeType = "light" | "dark";
+
+export type ThemeContextType = {
+    theme: ThemeType;
+    setTheme: (theme: ThemeType) => void;
+};
+
+export type ThemeProviderType = {
+    children: ReactNode | ReactNode[];
+};
 
 export const ThemeContext = createContext<ThemeContextType>({
     theme: "dark",
@@ -9,13 +19,10 @@ export const ThemeContext = createContext<ThemeContextType>({
     },
 });
 
-export const ThemeProvider: React.FC<ThemeProviderType> = ({children}) => {
-    // Set the initial theme to "dark" or read from local storage
+export const ThemeProvider = ({children}: ThemeProviderType) => {
     const [theme, setTheme] = useState<ThemeType>("dark");
 
-    // Apply the theme to the app when the theme changes
     useEffect(() => {
-        // Use CSS variables to apply the theme styles to the app
         document.documentElement.setAttribute("data-theme", theme);
     }, [theme]);
 

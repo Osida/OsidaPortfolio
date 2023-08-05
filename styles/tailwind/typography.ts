@@ -6,10 +6,8 @@ const weights = {
 
 const typography = {
     fontFamily: {
-        // sans: ["Roboto", "sans-serif"],
-        // serif: ["Times New Roman", "serif"],
         "roboto": ["Roboto", "sans-serif"],
-        "open-sans": ["Open Sans", "sans-serif"],
+        "montserrat": ["Montserrat", "sans-serif"],
     },
     fontWeight: {
         "h1": weights.bold,
@@ -26,7 +24,6 @@ const typography = {
         "caption": weights.normal,
         "overline": weights.normal,
     },
-    // Add more typography related configurations...
 };
 
 export default typography;

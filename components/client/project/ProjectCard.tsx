@@ -3,10 +3,13 @@ import Image from "next/image";
 import {urlForImage} from "@/lib/sanity";
 import placeholder from "@/public/images/placeholder-project.png";
 import React from "react";
+import {motion} from "framer-motion";
 
 const ProjectCard = ({project}: { project: ProjectSchema }) => {
     return (
-        <div className="mx-auto card card-compact max-w-sm h-fit bg-base-100 shadow-xl break-inside-avoid-column">
+        <motion.div
+            className="mx-auto card card-compact max-w-sm h-fit shadow-xl break-inside-avoid-column"
+        >
             <figure className="relative">
                 <Image
                     src={urlForImage(project.featureImage.asset)?.url() || placeholder}
@@ -17,20 +20,20 @@ const ProjectCard = ({project}: { project: ProjectSchema }) => {
                 />
             </figure>
             <div className="card-body space-y-5">
-                <h2 className="card-title">{project.projectName}</h2>
+                <h2 className="">{project.projectName}</h2>
                 <p>{project.projectDescription}</p>
                 <div className="card-actions justify-end">
                     <a href={project.repositoryLink} target="_blank" rel="noopener noreferrer"
-                       className="btn btn-primary btn-sm">
+                       className="btn btn-sm bg-secondary text-fontColor">
                         Code
                     </a>
                     <a href={project.deployedLink} target="_blank" rel="noopener noreferrer"
-                       className="btn btn-accent btn-sm">
+                       className="btn btn-sm bg-accent1 text-fontColor">
                         Live
                     </a>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

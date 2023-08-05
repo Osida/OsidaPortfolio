@@ -24,7 +24,7 @@ const SkillItem = ({ skill, index }: { skill: SkillSchema, index: number }) => {
                 // transition: {duration: 0.1, ease: "easeInOut"}
             }}
         >
-            <p className="absolute -top-5 text-xs font-bold text-center w-full">
+            <p className="absolute -top-5 text-center w-full">
                 {skill.skillName}
             </p>
             <Image

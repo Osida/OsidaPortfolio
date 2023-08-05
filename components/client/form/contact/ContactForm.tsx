@@ -1,10 +1,11 @@
+"use client";
 import React from "react";
 import {useForm} from "react-hook-form";
 import ErrorText from "@/components/client/form/ErrorText";
 import FormInput from "@/components/client/form/FormInput";
 import {FormDataType} from "@/app/contact/page";
 import {validationRules} from "@/components/client/form/contact/formValidation";
-import {Slide, toast} from "react-toastify";
+import {toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 interface ContactFormProps {
@@ -72,14 +73,14 @@ const ContactForm = ({onSubmit, isLoading}: ContactFormProps) => {
                 <textarea
                     aria-label="message"
                     placeholder="Enter your message."
-                    className="textarea textarea-bordered h-40 w-full textarea-ghost"
+                    className="textarea textarea-bordered h-40 w-full textarea-ghost placeholder-gray-400"
                     {...register("message", validationRules.message)}
                 />
                 {errors.message && <ErrorText>{errors.message.message}</ErrorText>}
             </div>
 
-            <div className="w-full pt-5 bg-red-2000">
-                <button type="submit" className="w-full btn btn-accent text-base-100" disabled={isLoading}>
+            <div className="w-full pt-5">
+                <button type="submit" className="w-full btn bg-accent1 text-fontColor" disabled={isLoading}>
                     Submit
                 </button>
             </div>

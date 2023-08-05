@@ -31,10 +31,10 @@ const Skills = () => {
                     variants={animations.headingVariants}
                     initial="hidden"
                     animate="visible"
-                    className="font-roboto text-h1 font-h1 text-center lg:text-left mb-5 lg:max-w-xl"
+                    className="text-center lg:text-left mb-5 lg:max-w-xl"
                 >
                     My
-                    <span className="text-primary">
+                    <span className=" text-accent2">
                         <Typewriter
                             words={["", " Skills"]}
                             cursor
@@ -50,7 +50,7 @@ const Skills = () => {
                     variants={animations.paragraphVariants}
                     initial="hidden"
                     animate="visible"
-                    className="font-open-sans text-body1 font-body1 mx-auto text-center max-w-xl lg:text-left lg:max-w-2xl lg:ml-0"
+                    className="mx-auto text-center max-w-xl lg:text-left lg:max-w-2xl lg:ml-0"
                 >
                     lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et
