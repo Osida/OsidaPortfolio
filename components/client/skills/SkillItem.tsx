@@ -17,7 +17,7 @@ const SkillItem = ({ skill, index }: { skill: SkillSchema, index: number }) => {
             variants={staggerVariants}
             initial="hidden"
             animate="visible"
-            transition={{duration: 0.3, delay: index * 0.3, ease: "easeInOut"}}
+            transition={{duration: 0.3, delay: index * 0.25, ease: "easeInOut"}}
         >
             <p className="absolute -top-5 text-center w-full body2">
                 {skill.skillName}
