@@ -7,6 +7,7 @@ import {animations, SlideFadeTransition} from "@/lib";
 import {DataFetchingError} from "@/utils/exceptions";
 import useProjects from "@/hooks/useProjects";
 import {ProjectCard} from "@/components/client";
+import CardSkeleton from "@/components/client/loading/CardSkeleton";
 
 const Projects = () => {
     const pathName = usePathname();
@@ -16,9 +17,9 @@ const Projects = () => {
         return data?.map((project, _) => <ProjectCard key={project._id} project={project}/>);
     }, [data]);
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
+    const ProjectItemsLoading = () => {
+        return Array(6).fill(0).map((_, i) => <CardSkeleton key={i} className="h-64"/>);
+    };
 
     if (isError && error) {
         throw new DataFetchingError();
@@ -47,7 +48,7 @@ const Projects = () => {
                 </motion.h1>
 
                 <section className="relative mt-16 mb-32 gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                    {projectItems}
+                    {isLoading ? <ProjectItemsLoading/> : projectItems}
                 </section>
             </main>
         </SlideFadeTransition>

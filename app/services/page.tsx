@@ -8,6 +8,7 @@ import {DataFetchingError} from "@/utils/exceptions";
 import {useServices} from "@/hooks";
 import {ServiceCard} from "@/components/client";
 import {playfulPortfolio} from "@/constants/text";
+import CardSkeleton from "@/components/client/loading/CardSkeleton";
 
 
 const Services = () => {
@@ -18,9 +19,9 @@ const Services = () => {
         return data?.map((service, _) => <ServiceCard key={service.serviceName} service={service}/>);
     }, [data]);
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
+    const ServicesItemsLoading = () => {
+        return Array(3).fill(0).map((_, i) => <CardSkeleton key={i}/>);
+    };
 
     if (isError && error) {
         throw new DataFetchingError();
@@ -57,14 +58,14 @@ const Services = () => {
                     {playfulPortfolio.services}
                 </motion.p>
 
-                {/* card container*/}
                 <section
                     className="bg-pink-2000 p-3 mt-16 mb-32 mx-auto space-y-10 md:max-w-3xl md:grid md:space-y-0 md:gap-10 md:grid-cols-2 lg:mx-0 lg:max-w-6xl lg:grid-cols-3">
-                    {servicesItems}
+                    {isLoading ? <ServicesItemsLoading/> : servicesItems}
                 </section>
             </main>
         </SlideFadeTransition>
     );
 };
+
 
 export default Services;

@@ -8,6 +8,7 @@ import {useSkills} from "@/hooks";
 import {SkillItem} from "@/components/client";
 import {DataFetchingError} from "@/utils/exceptions";
 import {playfulPortfolio} from "@/constants/text";
+import CardSkeleton from "@/components/client/loading/CardSkeleton";
 
 const Skills = () => {
     const pathName = usePathname();
@@ -17,9 +18,9 @@ const Skills = () => {
         return data?.map((skill, i) => <SkillItem key={skill._id} skill={skill} index={i}/>);
     }, [data]);
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
+    const SkillsItemsLoading = () => {
+        return Array(20).fill(0).map((_, i) => <CardSkeleton key={i} className="w-24 h-24"/>);
+    };
 
     if (isError && error) {
         throw new DataFetchingError();
@@ -59,7 +60,7 @@ const Skills = () => {
                 <section
                     className="bg-blue-5000 p-3 mt-16 mb-32 mx-auto md:max-w-3xl grid gap-10 grid-cols-2 md:grid-cols-3 lg:max-w-3xl lg:ml-0 lg:gap-y-20 lg:grid-cols-6"
                 >
-                    {skillsItems}
+                    {isLoading ? <SkillsItemsLoading/> : skillsItems}
                 </section>
             </main>
         </SlideFadeTransition>
