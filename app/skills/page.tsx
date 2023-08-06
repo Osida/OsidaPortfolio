@@ -7,6 +7,7 @@ import {animations, SlideFadeTransition} from "@/lib";
 import {useSkills} from "@/hooks";
 import {SkillItem} from "@/components/client";
 import {DataFetchingError} from "@/utils/exceptions";
+import {playfulPortfolio} from "@/constants/text";
 
 const Skills = () => {
     const pathName = usePathname();
@@ -50,11 +51,9 @@ const Skills = () => {
                     variants={animations.paragraphVariants}
                     initial="hidden"
                     animate="visible"
-                    className="mx-auto text-center max-w-xl lg:text-left lg:max-w-2xl lg:ml-0"
+                    className="mx-auto text-center max-w-xl body1 lg:text-left lg:max-w-2xl lg:ml-0"
                 >
-                    lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+                    {playfulPortfolio.skills}
                 </motion.p>
 
                 <section

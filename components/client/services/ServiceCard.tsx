@@ -11,7 +11,7 @@ const ServiceCard = ({service}: { service: ServiceSchema }) => {
             variants={animations.cardVariants}
             whileHover="hover"
             initial="initial"
-            transition={{duration: 0.3, ease: "easeInOut"}}
+            transition={{duration: 0.35, ease: "easeInOut"}}
             className="card mx-auto max-w-md shadow-2xl rounded-2xl break-inside-avoid-auto lg:mx-0 relative"
         >
             <figure className="relative rounded-2xl">
@@ -26,8 +26,8 @@ const ServiceCard = ({service}: { service: ServiceSchema }) => {
                     className="absolute top-0 left-0 w-full h-full rounded-2xl bg-gray-800/70 space-y-10 px-8 py-14"/>
                 <div
                     className="absolute top-0 left-0 w-full rounded-2xl h-full space-y-10 px-8 py-14 text-white">
-                    <h2 className="">{service.serviceName}</h2>
-                    <p className="">{service.serviceDescription}</p>
+                    <h4 className="subtitle1">{service.serviceName}</h4>
+                    <p className="body2">{service.serviceDescription}</p>
                 </div>
             </figure>
         </motion.div>

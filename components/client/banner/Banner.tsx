@@ -28,9 +28,9 @@ const Banner = ({title}: BannerProps) => {
             className="w-full container pt-5 flex flex-col justify-center items-center lg:flex-row lg:items-end lg:justify-between">
 
             <Link href={"/"}>
-                <h3 className="">
+                <h4 className="">
                     {title}<span className="text-accent1">.</span>
-                </h3>
+                </h4>
             </Link>
 
             <div className="space-x-3 flex items-center">

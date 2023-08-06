@@ -7,6 +7,7 @@ import {animations, SlideFadeTransition} from "@/lib";
 import {DataFetchingError} from "@/utils/exceptions";
 import {useServices} from "@/hooks";
 import {ServiceCard} from "@/components/client";
+import {playfulPortfolio} from "@/constants/text";
 
 
 const Services = () => {
@@ -51,11 +52,9 @@ const Services = () => {
                     variants={animations.paragraphVariants}
                     initial="hidden"
                     animate="visible"
-                    className="mx-auto text-center max-w-xl lg:text-left lg:max-w-2xl lg:ml-0"
+                    className="mx-auto text-center max-w-xl body1 lg:text-left lg:max-w-2xl lg:ml-0"
                 >
-                    lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+                    {playfulPortfolio.services}
                 </motion.p>
 
                 {/* card container*/}

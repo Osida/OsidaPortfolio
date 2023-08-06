@@ -4,10 +4,15 @@ import {urlForImage} from "@/lib/sanity";
 import placeholder from "@/public/images/placeholder-project.png";
 import React from "react";
 import {motion} from "framer-motion";
+import {animations} from "@/lib";
 
 const ProjectCard = ({project}: { project: ProjectSchema }) => {
     return (
         <motion.div
+            variants={animations.cardVariants}
+            whileHover="hover"
+            initial="initial"
+            transition={{duration: 0.35, ease: "easeInOut"}}
             className="mx-auto card card-compact max-w-sm h-fit shadow-xl break-inside-avoid-column"
         >
             <figure className="relative">
@@ -19,16 +24,16 @@ const ProjectCard = ({project}: { project: ProjectSchema }) => {
                     className="mx-auto object-contain md:w-full md:h-full"
                 />
             </figure>
-            <div className="card-body space-y-5">
-                <h2 className="">{project.projectName}</h2>
-                <p>{project.projectDescription}</p>
+            <div className="card-body space-y-3">
+                <h6>{project.projectName}</h6>
+                <p className="body2">{project.projectDescription}</p>
                 <div className="card-actions justify-end">
                     <a href={project.repositoryLink} target="_blank" rel="noopener noreferrer"
-                       className="btn btn-sm bg-secondary text-fontColor">
+                       className="btn btn-sm bg-secondary text-fontColor shadow-sm">
                         Code
                     </a>
                     <a href={project.deployedLink} target="_blank" rel="noopener noreferrer"
-                       className="btn btn-sm bg-accent1 text-fontColor">
+                       className="btn btn-sm bg-accent1 text-fontColor shadow-smm">
                         Live
                     </a>
                 </div>

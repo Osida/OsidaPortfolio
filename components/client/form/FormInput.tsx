@@ -20,11 +20,12 @@ const FormInput = forwardRef(function FormInput(
                     ref={ref}
                     aria-invalid={!!error}
                     aria-describedby={error ? `error-${rest.name}` : undefined}
-                    className={`input input-bordered w-full input-ghost placeholder-gray-400 ${classNames}`}
+                    className={`input input-bordered w-full input-ghost placeholder-gray-400 body2 focus:bg-transparent ${classNames}`}
                 />
                 {error && <ErrorText>{error?.message}</ErrorText>}
             </div>
         );
     }
 );
+
 export default FormInput;

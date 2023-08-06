@@ -22,6 +22,66 @@
 
         --color-font: 234 234 234; /* Light Gray */
     }
+
+    .heading {
+        @apply font-montserrat leading-tight;
+    }
+
+    .body {
+        @apply font-roboto leading-relaxed;
+    }
+
+    .button {
+        @apply px-4 py-2 font-bold bg-blue-500 rounded-md;
+    }
+
+    .caption {
+        @apply font-roboto;
+    }
+
+    .overline {
+        @apply font-montserrat uppercase tracking-wide;
+    }
+
+    h1 {
+        @apply heading text-4xl sm:text-5xl;
+    }
+
+    h2 {
+        @apply heading text-3xl sm:text-4xl;
+    }
+
+    h3 {
+        @apply heading text-2xl sm:text-3xl;
+    }
+
+    h4 {
+        @apply heading text-xl sm:text-2xl;
+    }
+
+    h5 {
+        @apply heading text-lg sm:text-xl;
+    }
+
+    h6 {
+        @apply heading text-base sm:text-lg;
+    }
+
+    .subtitle1 {
+        @apply body text-lg sm:text-xl;
+    }
+
+    .subtitle2 {
+        @apply body text-base sm:text-lg;
+    }
+
+    .body1 {
+        @apply body text-base sm:text-lg;
+    }
+
+    .body2 {
+        @apply body text-sm sm:text-base;
+    }
 }
 
 @layer components {

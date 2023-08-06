@@ -9,6 +9,7 @@ import {images} from "@/public";
 import {useEffect, useState} from "react";
 import {usePathname} from "next/navigation";
 import {AnimatedArrow} from "@/components/client";
+import {playfulPortfolio} from "@/constants/text";
 
 
 export default function Home() {
@@ -32,7 +33,7 @@ export default function Home() {
                 >
                     Transforming Ideas <br/>
                     <div className="text-accent2">
-                        <Typewriter words={[...headerTaglines]} loop={5} cursor cursorStyle="_" typeSpeed={150}
+                        <Typewriter words={[...headerTaglines]} loop={5} cursor cursorStyle="_" typeSpeed={170}
                                     deleteSpeed={100} delaySpeed={1000}/>
                     </div>
                 </motion.h1>
@@ -41,11 +42,9 @@ export default function Home() {
                     variants={animations.paragraphVariants}
                     initial="hidden"
                     animate="visible"
-                    className={`z-50 mx-auto text-center max-w-xl lg:text-left lg:max-w-2xl lg:ml-0`}
+                    className={`z-50 mx-auto text-center max-w-xl body1 lg:text-left lg:max-w-2xl lg:ml-0`}
                 >
-                    lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+                    {playfulPortfolio.home}
                 </motion.p>
 
                 <div className="flex items-center justify-center lg:justify-start lg:pl-3 mt-16">

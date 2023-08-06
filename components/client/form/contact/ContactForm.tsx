@@ -29,12 +29,12 @@ const ContactForm = ({onSubmit, isLoading}: ContactFormProps) => {
 
     return (
         <form
-            className="bg-amber-2000 form-control w-full max-w-xs mx-auto space-y-2 mb-20 md:max-w-xl lg:ml-0 "
+            className="form-control w-full max-w-xs mx-auto space-y-2 mb-20 md:max-w-xl lg:ml-0 "
             onSubmit={handleSubmit(onSubmitHandler)}
         >
             {/*{toast.success("Form submitted successfully!")}*/}
             <div className="flex flex-col md:flex-row md:space-x-4">
-                <div>
+                <div className="md:flex-1">
                     <label className="label space-x-4"><span className="label-text">Name</span></label>
                     <FormInput
                         type="text"
@@ -45,7 +45,7 @@ const ContactForm = ({onSubmit, isLoading}: ContactFormProps) => {
                     />
                 </div>
 
-                <div>
+                <div className="md:flex-1">
                     <label className="label space-x-4"><span className="label-text">Email</span></label>
                     <FormInput
                         type="email"
@@ -68,12 +68,12 @@ const ContactForm = ({onSubmit, isLoading}: ContactFormProps) => {
                 />
             </div>
 
-            <div className="bg-red-2000">
+            <div>
                 <label className="label space-x-4"><span className="label-text">Message</span></label>
                 <textarea
                     aria-label="message"
                     placeholder="Enter your message."
-                    className="textarea textarea-bordered h-40 w-full textarea-ghost placeholder-gray-400"
+                    className="textarea textarea-bordered h-40 w-full textarea-ghost placeholder-gray-400 body2 focus:bg-transparent"
                     {...register("message", validationRules.message)}
                 />
                 {errors.message && <ErrorText>{errors.message.message}</ErrorText>}

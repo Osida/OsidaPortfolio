@@ -11,7 +11,7 @@ export const animations = {
         visible: {opacity: 1, y: 0, transition: {duration: 1, delay: 1, ease: "easeInOut"}},
     },
     cardVariants: {
-        hover: {y: -20, scale: 1.02},
+        hover: {y: -10, scale: 1.01},
         initial: {y: 0, scale: 1.0}
     },
     imageVariants: {
@@ -25,7 +25,7 @@ export const animations = {
             scale: [1, 1.03, 1],
             y: ["0%", "-2%", "0%"],
             opacity: 1,
-            transition: {duration: 5, repeat: Infinity}
+            transition: {duration: 7, repeat: Infinity}
         }
     }
 };

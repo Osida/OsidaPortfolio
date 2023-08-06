@@ -46,7 +46,7 @@ const Projects = () => {
                     </span>
                 </motion.h1>
 
-                <section className="relative bg-violet-5000 mt-16 mb-32 columns-1 md:columns-2 lg:columns-3 space-y-7">
+                <section className="relative mt-16 mb-32 gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     {projectItems}
                 </section>
             </main>

@@ -18,13 +18,8 @@ const SkillItem = ({ skill, index }: { skill: SkillSchema, index: number }) => {
             initial="hidden"
             animate="visible"
             transition={{duration: 0.3, delay: index * 0.3, ease: "easeInOut"}}
-            whileHover={{
-                scale: 1.2,
-                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-                // transition: {duration: 0.1, ease: "easeInOut"}
-            }}
         >
-            <p className="absolute -top-5 text-center w-full">
+            <p className="absolute -top-5 text-center w-full body2">
                 {skill.skillName}
             </p>
             <Image
@@ -33,7 +28,7 @@ const SkillItem = ({ skill, index }: { skill: SkillSchema, index: number }) => {
                 fill={true}
                 // width={90}
                 // height={90}
-                className={"rounded-full object-contain"}
+                className={"rounded-full object-contain drop-shadow-xl"}
             />
         </motion.div>
     );

@@ -20,7 +20,7 @@ const ErrorText = ({children, style}: ErrorTextSchema) => {
             animate="animate"
             exit="exit"
             transition={{duration: 0.3, ease: "easeInOut"}}
-            className={`mt-1 ml-1 w-full max-w-xl lg:max-w-2xl text-error ${style}`}
+            className={`mt-1 ml-1 w-full max-w-xl lg:max-w-2xl text-error body2 ${style}`}
             role="alert"
         >
             {children}
