@@ -1,6 +1,6 @@
 "use client";
 import React, {useContext} from "react";
-import {ThemeContext, ThemeType} from "@/components/client/theme/ThemeProvider";
+import {ThemeContext, ThemeType} from "@/context/ThemeProvider";
 import {BsFillMoonFill, BsFillSunriseFill} from "react-icons/bs";
 
 export const ThemeToggle = ({styles}: { styles: string }) => {
@@ -12,8 +12,12 @@ export const ThemeToggle = ({styles}: { styles: string }) => {
     };
 
     return (
-        <button className="btn btn-ghost" onClick={handleThemeChange}>
-            {theme === "light" ? <BsFillMoonFill className={styles}/> : <BsFillSunriseFill className={styles}/>}
+        <button className="btn btn-ghost" data-cy="theme-toggle-button" onClick={handleThemeChange}>
+            {
+                theme === "light" ?
+                    <BsFillMoonFill className={styles} data-cy="moon-icon"/> :
+                    <BsFillSunriseFill className={styles} data-cy="sun-icon"/>
+            }
         </button>
     );
 };

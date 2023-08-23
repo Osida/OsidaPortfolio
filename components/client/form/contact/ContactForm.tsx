@@ -18,7 +18,8 @@ const ContactForm = ({onSubmit, isLoading}: ContactFormProps) => {
 
     const onSubmitHandler = async (data: FormDataType) => {
         try {
-            onSubmit(data);
+            const res = await onSubmit(data);
+            console.log(res);
             toast.success("Form submitted successfully!");
             reset();
         } catch (error) {

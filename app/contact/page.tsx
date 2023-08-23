@@ -9,7 +9,7 @@ import {usePathname} from "next/navigation";
 import {ContactForm} from "@/components/client";
 import useContactFormMutation from "@/hooks/useContactFormMutation";
 import {ToastContainer} from "react-toastify";
-import {ThemeContext} from "@/components/client/theme/ThemeProvider";
+import {ThemeContext} from "@/context/ThemeProvider";
 
 // Define the generic form data interface
 export interface FormData {

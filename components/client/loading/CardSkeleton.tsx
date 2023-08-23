@@ -1,7 +1,7 @@
 "use client";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import {ThemeContext} from "@/components/client/theme/ThemeProvider";
+import {ThemeContext} from "@/context/ThemeProvider";
 import {useContext} from "react";
 
 interface CardSkeletonProps {

@@ -25,15 +25,17 @@ const Banner = ({title}: BannerProps) => {
             initial={{opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : -50}}
             animate={controls}
             transition={transition}
-            className="w-full container pt-5 flex flex-col justify-center items-center lg:flex-row lg:items-end lg:justify-between">
-
+            className="w-full container pt-5 flex flex-col justify-center items-center lg:flex-row lg:items-end lg:justify-between"
+            data-cy="banner-container"
+        >
             <Link href={"/"}>
-                <h4 className="">
-                    {title}<span className="text-accent1">.</span>
+                <h4 data-cy="banner-title">
+                    {title}
+                    <span className="text-accent1" data-cy="banner-title-dot">.</span>
                 </h4>
             </Link>
 
-            <div className="space-x-3 flex items-center">
+            <div className="space-x-3 flex items-center" data-cy="banner-social-links">
                 {socialLinks.map(({path, name, Icon}, _) => (
                     <motion.li
                         key={name}
@@ -41,8 +43,11 @@ const Banner = ({title}: BannerProps) => {
                         whileTap="tap"
                         whileHover="hover"
                         className="btn btn-ghost"
+                        data-cy={`social-link-${name}`}
                     >
-                        <a href={path} target="_blank" rel="noopener noreferrer">{Icon}</a>
+                        <a href={path} target="_blank" rel="noopener noreferrer" data-cy={`social-link-icon-${name}`}>
+                            {Icon}
+                        </a>
                     </motion.li>
                 ))}
 
@@ -50,6 +55,7 @@ const Banner = ({title}: BannerProps) => {
                     variants={bannerLinkVariants}
                     whileTap="tap"
                     whileHover="hover"
+                    data-cy="theme-toggle"
                 >
                     <ThemeToggle styles={"nav-icon"}/>
                 </motion.div>

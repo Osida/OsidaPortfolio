@@ -4,7 +4,7 @@ import {Inter} from "next/font/google";
 import React from "react";
 import Nav from "@/components/client/nav/Nav";
 import Banner from "@/components/client/banner/Banner";
-import {ThemeProvider} from "@/components/client/theme/ThemeProvider";
+import {ThemeProvider} from "@/context/ThemeProvider";
 import {QueryProvider} from "@/lib";
 import {ToastContainer} from "react-toastify";
 
