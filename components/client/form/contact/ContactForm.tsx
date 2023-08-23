@@ -81,7 +81,7 @@ const ContactForm = ({onSubmit, isLoading}: ContactFormProps) => {
             </div>
 
             <div className="w-full pt-5">
-                <button type="submit" className="w-full btn bg-accent1 text-fontColor" disabled={isLoading}>
+                <button type="submit" className="w-full btn btn-ghost bg-accent1 text-fontColor hover:bg-accent1/70" disabled={isLoading}>
                     Submit
                 </button>
             </div>

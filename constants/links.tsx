@@ -7,7 +7,7 @@ import React, {ReactNode} from "react";
 export interface NavLinkSchema {
     path: string;
     name: string;
-    Icon: ReactNode;
+    Icon: (props: any) => React.JSX.Element;
 }
 
 export interface SocialLinkSchema extends NavLinkSchema {
@@ -17,27 +17,27 @@ export const navLinks: NavLinkSchema[] = [
     {
         path: "/",
         name: "home",
-        Icon: <AiFillHome className="nav-icon"/>,
+        Icon: (props: any) => <AiFillHome {...props}/>,
     },
     {
         path: "/services",
         name: "services",
-        Icon: <AiFillTool className="nav-icon"/>
+        Icon: (props: any) => <AiFillTool {...props}/>
     },
     {
         path: "/projects",
         name: "projects",
-        Icon: <BsBriefcaseFill className="nav-icon"/>,
+        Icon: (props: any) => <BsBriefcaseFill {...props}/>,
     },
     {
         path: "/skills",
         name: "skills",
-        Icon: <AiFillStar className="nav-icon"/>,
+        Icon: (props: any) => <AiFillStar {...props}/>,
     },
     {
         path: "/contact",
         name: "contact",
-        Icon: <MdEmail className="nav-icon"/>,
+        Icon: (props: any) => <MdEmail {...props}/>,
     },
 ];
 
@@ -45,12 +45,12 @@ export const socialLinks: SocialLinkSchema[] = [
     {
         path: "https://github.com/Osida",
         name: "GitHub",
-        Icon: <FaGithub className="nav-icon"/>,
+        Icon: (props: any) => <FaGithub {...props}/>,
     },
     {
         path: "https://www.linkedin.com/in/osida-richards",
         name: "LinkedIn",
-        Icon: <FaLinkedin className="nav-icon"/>,
+        Icon: (props: any) => <FaLinkedin {...props}/>,
     },
     // {
     //     path: "https://www.instagram.com",

@@ -6,8 +6,11 @@ import {navLinks} from "@/constants";
 import {navLinkVariants} from "@/lib/framerMotion/animations";
 import {NavLinkSchema} from "@/constants/links";
 import {navMotionStyles, transition} from "@/components/client/nav/motionStyles";
+import {usePathname} from "next/navigation";
 
 const Nav = () => {
+    const pathName = usePathname();
+
     return (
         <motion.nav
             initial={navMotionStyles.initial}
@@ -18,27 +21,31 @@ const Nav = () => {
         >
             <ul className="bg-red-2000 w-full h-full flex items-center justify-between px-2 sm:px-4 md:px-0 md:justify-evenly"
                 data-cy="nav-list">
-                {navLinks.map(({path, name, Icon}: NavLinkSchema, _) => (
-                    <Link key={name} href={path} data-cy={`nav-link-container-${name}`}>
-                        <motion.li
-                            variants={navLinkVariants}
-                            whileTap="tap"
-                            className="cursor-pointer"
-                            data-cy={`nav-link-${name}`}
-                        >
+                {navLinks.map(({path, name, Icon}: NavLinkSchema, _) => {
+                    const isActive = path === pathName;
+
+                    return (
+                        <Link key={name} href={path} data-cy={`nav-link-container-${name}`}>
+                            <motion.li
+                                variants={navLinkVariants}
+                                whileTap="tap"
+                                className="cursor-pointer"
+                                data-cy={`nav-link-${name}`}
+                            >
                             <span className="bg-green-5000  flex flex-col items-center"
                                   data-cy={`nav-link-content-${name}`}>
-                                <span data-cy={`nav-link-icon-${name}`}>{Icon}</span>
+                                <span data-cy={`nav-link-icon-${name}`}><Icon
+                                    className={`nav-icon ${isActive && "text-accent2"}`}/></span>
                                 <p className=" mt-1 -bottom-4 text-[0.6rem] lg:-bottom-5 lg:text-xs"
                                    data-cy={`nav-link-text-${name}`}>{name}</p>
                             </span>
-                        </motion.li>
-                    </Link>
-                ))}
+                            </motion.li>
+                        </Link>
+                    );
+                })}
             </ul>
         </motion.nav>
     );
 };
-
 
 export default Nav;

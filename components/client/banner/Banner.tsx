@@ -46,7 +46,7 @@ const Banner = ({title}: BannerProps) => {
                         data-cy={`social-link-${name}`}
                     >
                         <a href={path} target="_blank" rel="noopener noreferrer" data-cy={`social-link-icon-${name}`}>
-                            {Icon}
+                            <Icon className="nav-icon"/>
                         </a>
                     </motion.li>
                 ))}
