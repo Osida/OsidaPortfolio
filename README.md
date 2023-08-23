@@ -45,6 +45,6 @@ console.log(journey.join('\n'));
 
 ## 🚀 Explore My Portfolio
 
-- Dive into my projects on osida.vercel.app
+- Dive into my projects. [Click here](https://osida.vercel.app/)
 - Discover my expertise in frontend, backend, and React Native development.
 - See full-stack capabilities showcased in the Skills section.
