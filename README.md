@@ -24,6 +24,8 @@ const skills = {
 const osida = new Developer("Osida", skills);
 console.log(osida.greet());
 ```
+## 👀 Preview
+https://github.com/Osida/OsidaPortfolio/assets/51928654/f51565f3-2352-4812-94bb-6cd1476a6e40
 
 ## 📫 Let's Connect
 
