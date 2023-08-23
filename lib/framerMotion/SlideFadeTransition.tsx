@@ -24,6 +24,7 @@ const SlideFadeTransition = ({path, children}: PageFadeAndSlideTransitionProps) 
                 animate={pageVariants.animate}
                 exit={pageVariants.exit}
                 transition={pageTransition}
+                data-cy="slide-fade-transition"
             >
                 {children}
             </motion.div>

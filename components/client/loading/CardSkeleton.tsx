@@ -12,13 +12,14 @@ const CardSkeleton = ({className}: CardSkeletonProps) => {
     const {theme} = useContext(ThemeContext);
 
     return (
-        <div className={`max-w-md h-[524px] shadow-2xl rounded-2xl ${className}`}>
+        <div className={`max-w-md h-[524px] shadow-2xl rounded-2xl ${className}`} data-cy="card-skeleton-container">
             <Skeleton
                 // width={500}
                 // height={500}
                 baseColor={theme === "dark" ? "#2f2f2f" : "#eaeaea"}
                 highlightColor={theme === "dark" ? "#1b1b1b" : "#f8f8f8"}
                 className="w-full h-full object-contain rounded-2xl"
+                data-cy="skeleton-element"
             />
         </div>
     );

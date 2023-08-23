@@ -23,18 +23,26 @@ export default function Home() {
     }, []);
 
     return (
-        <SlideFadeTransition path={pathName}>
-            <main className="container relative mt-24 mb-40">
+        <SlideFadeTransition path={pathName} data-cy="slide-fade-transition">
+            <main className="container relative mt-24 mb-40" data-cy="main-container">
                 <motion.h1
                     variants={animations.headingVariants}
                     initial="hidden"
                     animate="visible"
                     className={`mb-5 text-center lg:mb-8 lg:text-5xl lg:text-left lg:max-w-3xl`}
+                    data-cy="motion-heading"
                 >
                     Transforming Ideas <br/>
-                    <div className="text-accent2">
-                        <Typewriter words={[...headerTaglines]} loop={5} cursor cursorStyle="_" typeSpeed={170}
-                                    deleteSpeed={100} delaySpeed={1000}/>
+                    <div className="text-accent2" data-cy="typewriter-div">
+                        <Typewriter
+                            words={[...headerTaglines]}
+                            loop={5}
+                            cursor
+                            cursorStyle="_"
+                            typeSpeed={170}
+                            deleteSpeed={100}
+                            delaySpeed={1000}
+                        />
                     </div>
                 </motion.h1>
 
@@ -43,11 +51,13 @@ export default function Home() {
                     initial="hidden"
                     animate="visible"
                     className={`z-50 mx-auto text-center max-w-xl body1 lg:text-left lg:max-w-2xl lg:ml-0`}
+                    data-cy="motion-paragraph"
                 >
                     {playfulPortfolio.home}
                 </motion.p>
 
-                <div className="flex items-center justify-center lg:justify-start lg:pl-3 mt-16">
+                <div className="flex items-center justify-center lg:justify-start lg:pl-3 mt-16"
+                     data-cy="animated-arrow-wrapper">
                     <AnimatedArrow/>
                 </div>
 
@@ -56,6 +66,7 @@ export default function Home() {
                     initial="hidden"
                     animate={animation}
                     className="z-0 relative lg:absolute lg:top-20 lg:right-10 xl:top-32 xl:right-20"
+                    data-cy="motion-image"
                 >
                     <Image
                         src={images.panda.src}

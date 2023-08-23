@@ -28,8 +28,8 @@ const Services = () => {
     }
 
     return (
-        <SlideFadeTransition path={pathName}>
-            <main className="container bg-red-2000 mt-24 mb-40">
+        <SlideFadeTransition path={pathName} data-cy="services-main">
+            <main className="container bg-red-2000 mt-24 mb-40" data-cy="services-container">
                 <motion.h1
                     variants={animations.headingVariants}
                     initial="hidden"
@@ -59,8 +59,14 @@ const Services = () => {
                 </motion.p>
 
                 <section
-                    className="bg-pink-2000 p-3 mt-16 mb-32 mx-auto space-y-10 md:max-w-3xl md:grid md:space-y-0 md:gap-10 md:grid-cols-2 lg:mx-0 lg:max-w-6xl lg:grid-cols-3">
-                    {isLoading ? <ServicesItemsLoading/> : servicesItems}
+                    className="bg-pink-2000 p-3 mt-16 mb-32 mx-auto space-y-10 md:max-w-3xl md:grid md:space-y-0 md:gap-10 md:grid-cols-2 lg:mx-0 lg:max-w-6xl lg:grid-cols-3"
+                    data-cy="services-section"
+                >
+                    {
+                        isLoading ?
+                            <div data-cy="services-loading"><ServicesItemsLoading/></div> :
+                            <div data-cy="services-items">{servicesItems}</div>
+                    }
                 </section>
             </main>
         </SlideFadeTransition>
