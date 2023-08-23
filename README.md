@@ -28,7 +28,7 @@ console.log(osida.greet());
 ## 📫 Let's Connect
 
 - [Visit my Portfolio](https://osida.vercel.app/)
-- [Connect with me on LinkedIn](www.linkedin.com/in/osida-richards)
+- [Connect with me on LinkedIn](https://www.linkedin.com/in/osida-richards)
 - Email me at [osidarichards@zohomail.com](mailto:osidarichards@zohomail.com)
 
 ## 🚀 My Journey
