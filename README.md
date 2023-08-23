@@ -1,34 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Hi there, I'm Osida! 👋
 
-## Getting Started
+```javascript
+class Developer {
+    constructor(name, skills) {
+        this.name = name;
+        this.skills = skills;
+    }
 
-First, run the development server:
+    greet() {
+        return `Hello, I'm ${this.name}, a web developer passionate about full-stack development.`;
+    }
+}
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+const skills = {
+    frontend: ["Next.js", "Tailwind CSS", "Framer Motion", "Redux", "TypeScript", "Figma"],
+    backend: ["Node.js", "GraphQL"],
+    mobile: ["React Native"],
+    testing: ["Cypress"],
+    database: ["Sanity.io", "MongoDB", "Firebase", "MySQL"],
+    tools: ["VS Code", "Git", "GitHub"]
+};
+
+const osida = new Developer("Osida", skills);
+console.log(osida.greet());
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📫 Let's Connect
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Visit my Portfolio](https://www.osida.dev)
+- [Connect with me on LinkedIn](https://linkedin.com/in/osida)
+- [Follow me on Twitter](https://twitter.com/osida_)
+- Email me at [osidarichards@zohomail.com](mailto:osidarichards@zohomail.com)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🚀 My Journey
 
-## Learn More
+```javascript
+const journey = [
+    'Pushing the boundaries of web development',
+    'Learning something new every day',
+    'Building seamless digital experiences'
+];
 
-To learn more about Next.js, take a look at the following resources:
+console.log(journey.join('\n'));
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Explore My Portfolio
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Dive into my projects on osida.vercel.app
+- Discover my expertise in frontend, backend, and React Native development.
+- See full-stack capabilities showcased in the Skills section.

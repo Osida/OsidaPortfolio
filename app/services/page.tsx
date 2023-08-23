@@ -16,11 +16,12 @@ const Services = () => {
     const {isLoading, isError, data, error} = useServices();
 
     const servicesItems = useMemo(() => {
-        return data?.map((service, _) => <ServiceCard key={service.serviceName} service={service}/>);
+        return data?.map((service, _) =>
+            <ServiceCard key={service.serviceName} service={service} data-cy="services-items"/>);
     }, [data]);
 
     const ServicesItemsLoading = () => {
-        return Array(3).fill(0).map((_, i) => <CardSkeleton key={i}/>);
+        return Array(3).fill(0).map((_, i) => <CardSkeleton key={i} data-cy="services-loading"/>);
     };
 
     if (isError && error) {
@@ -63,9 +64,7 @@ const Services = () => {
                     data-cy="services-section"
                 >
                     {
-                        isLoading ?
-                            <div data-cy="services-loading"><ServicesItemsLoading/></div> :
-                            <div data-cy="services-items">{servicesItems}</div>
+                        isLoading ? <ServicesItemsLoading/> : servicesItems
                     }
                 </section>
             </main>

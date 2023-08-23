@@ -7,6 +7,7 @@ import {navLinkVariants} from "@/lib/framerMotion/animations";
 import {NavLinkSchema} from "@/constants/links";
 import {navMotionStyles, transition} from "@/components/client/nav/motionStyles";
 import {usePathname} from "next/navigation";
+import {capitalizeFirstLetter} from "@/utils";
 
 const Nav = () => {
     const pathName = usePathname();
@@ -23,7 +24,6 @@ const Nav = () => {
                 data-cy="nav-list">
                 {navLinks.map(({path, name, Icon}: NavLinkSchema, _) => {
                     const isActive = path === pathName;
-
                     return (
                         <Link key={name} href={path} data-cy={`nav-link-container-${name}`}>
                             <motion.li
@@ -34,10 +34,16 @@ const Nav = () => {
                             >
                             <span className="bg-green-5000  flex flex-col items-center"
                                   data-cy={`nav-link-content-${name}`}>
-                                <span data-cy={`nav-link-icon-${name}`}><Icon
-                                    className={`nav-icon ${isActive && "text-accent2"}`}/></span>
-                                <p className=" mt-1 -bottom-4 text-[0.6rem] lg:-bottom-5 lg:text-xs"
-                                   data-cy={`nav-link-text-${name}`}>{name}</p>
+                                <span
+                                    data-cy={`nav-link-icon-${name}`}>
+                                    <Icon className={`nav-icon ${isActive && "text-accent2"}`}/>
+                                </span>
+                                <p
+                                    className=" mt-1 -bottom-4 text-[0.6rem] lg:-bottom-5 lg:text-xs"
+                                    data-cy={`nav-link-text-${name}`}
+                                >
+                                    {capitalizeFirstLetter(name)}
+                                </p>
                             </span>
                             </motion.li>
                         </Link>
